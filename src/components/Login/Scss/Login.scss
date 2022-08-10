@@ -1,0 +1,267 @@
+.Login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 300003;
+    background-color: white;
+
+    .logo {
+        position: absolute;
+        top: 1.3020833333333333vw;
+        left: 3.2552083333333335vw;
+        font-weight: 700;
+        color: black;
+        padding: 0;
+        margin: 0;
+        img{
+            width: 100%;
+        }
+    }
+
+    .right-radius {
+        position: absolute;
+        width: 50%;
+        height: 160%;
+        background-color: black;
+        right: 0;
+        top: -30%;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width:1200px) {
+            height: 120%;
+            top: -10%;
+        }
+
+        @media (max-width:767px) {
+            display: none;
+        }
+
+        img {
+            width: 70%;
+        }
+    }
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        width: 100%;
+        height: 100%;
+        padding: 0vw 10vw;
+
+        @media (max-width:1629px) {
+            padding: 0 5.208333333333333vw;
+        }
+
+        @media (max-width:1555px) {
+            padding: 0 5.208333333333333vw;
+        }
+
+        @media (max-width:1250px) {
+            padding: 0 3.90625vw;
+        }
+
+        @media (max-width:1000px) {
+            padding: 0 3.90625vw;
+        }
+
+        @media (max-width:870px) {
+            padding:  0 1.953125vw;
+        }
+
+        @media (max-width:767px) {
+            justify-content: center;
+            padding: 0 3.2552083333333335vw;
+        }
+
+        .login,
+        .register {
+            .title {
+                font-weight: 400;
+                text-align: center;
+            }
+
+            .text {
+                width:33.072916666666664vw;
+                font-weight: 400;
+                font-size: 1.3020833333333333vw;
+                line-height: 2.2786458333333335vw;
+                color: rgba(66, 68, 90, 0.6);
+                padding-right:2.6041666666666665vw;
+                margin-top: 6.510416666666667vw;
+
+                @media (max-width:500px) {
+                    margin-bottom: 1.3020833333333333vw;
+                    font-size: 0.9114583333333334vw;
+                    text-align: justify;
+                    padding-right: 0;
+                }
+
+                a {
+                    color: #0015FF;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 1.3020833333333333vw;
+                    line-height: 2.2786458333333335vw;
+                    text-decoration: none;
+                }
+
+
+            }
+
+            .code {
+                color: black;
+                opacity: 0.5;
+                text-align: center;
+                margin-top : 1.953125vw;
+
+                @media (max-width:500px) {
+                    margin-bottom: 1.3020833333333333vw;
+                    font-size: 0.9114583333333334vw;
+                    text-align: justify;
+                    padding-right: 0;
+                }
+            }
+
+          
+
+            .col-md-12 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                
+                .btn_chevron{
+                    background-color: #fff;
+                    position: absolute;
+                    height:3.5807291666666665vw;
+                    top:2.1484375vw;
+                    right: 6.510416666666667vw;
+                    border-left:0.06510416666666667vw solid #BDBDBD;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding-left: 0.9765625vw;
+                    padding-right: 0.9765625vw;
+                    cursor: pointer;
+                    &:hover{
+                        transform: scale(0.99);
+                    }
+
+                    svg{
+                        width:1.6276041666666667vw;
+                        height:1.6276041666666667vw;
+                    }
+                }
+
+                .default{
+                    display: none;
+                }
+              
+                
+            }
+
+            .form-control {
+                width: 70%;
+                margin-top : 1.953125vw;
+                padding: 1.171875vw;
+                border-radius:1.1067708333333333vw;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 1.3020833333333333vw;
+                line-height:1.4973958333333333vw;
+
+               
+
+                &::placeholder {
+                    color: #BDBDBD;
+                }
+
+                @media (max-width:1100px) {
+                    width: 80%;
+                }
+
+                @media (max-width:500px) {
+                    width: 100%;
+                    padding: 0.8463541666666666vw;
+                    border-radius:0.78125vw;
+                }
+            }
+
+            .btn {
+                margin-top: 2.2786458333333335vw;
+                background-color: black;
+                color: white;
+                text-align: center;
+                width: 50%;
+                border-radius: 1.3020833333333333vw;
+                padding: 0.6510416666666666vw 0;
+                font-size:1.8229166666666667vw;
+                font-weight: 600;
+                transition: 0.3s;
+
+                &:hover {
+                    background-color: rgb(33, 33, 33);
+                }
+
+                &:active {
+                    transform: scale(0.97);
+                }
+
+                @media (max-width:1100px) {
+                    width: 65%;
+                }
+
+                @media (max-width:500px) {
+                    width: 75%;
+                    padding: 0.6510416666666666vw;
+                    border-radius: 0.9765625vw;
+                    font-size: 1.171875vw;
+                    font-weight: 500;
+                }
+            }
+
+            .reg {
+                color: dodgerblue;
+                text-align: center;
+                margin-top : 1.953125vw;
+                text-decoration: underline;
+                cursor: pointer;
+                font-size: 1.3020833333333333vw;
+
+                @media (max-width:500px) {
+                    font-size: 1.171875vw;
+                }
+            }
+
+
+            .remember__password {
+                color: blue;
+                font-style: normal;
+                font-weight: 400;
+                font-size:0.7161458333333334vw;
+                line-height: 0.8463541666666666vw;
+                text-decoration-line: underline;
+                color: #008DFF;
+                cursor: pointer;
+                text-align: right;
+                position: relative;
+                right:7.161458333333333vw;
+                margin-top:0.5208333333333334vw;
+
+            }
+
+
+
+
+
+
+        }
+    }
+}

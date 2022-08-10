@@ -1,0 +1,22 @@
+.ScrollUp {
+    position: fixed;
+    bottom: 1.953125vw;
+    z-index: 999;
+    right: 1.953125vw;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    cursor: pointer;
+    padding: 0.9765625vw;
+    border-radius: 3.2552083333333335vw;
+    display: flex;
+    font-size: 1.953125vw;
+    width: 2.9296875vw;
+    height: 2.9296875vw;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  

@@ -1,0 +1,301 @@
+.Profile {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0%;
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 1.3020833333333333vw 6.510416666666667vw;
+    position: relative;
+    margin-top: 3%;
+    .progile-title {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      align-items: center;
+      gap: 32%;
+      h1 {
+        font-family: "Rubik";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 3.2496289062499994vw;
+        line-height:3.8411458333333335vw;
+        color: #000000;
+      }
+    }
+    .form {
+      width: 100%;
+      height: auto;
+      display: flex;
+      margin:4.557291666666667vw 0;
+      flex-direction: column;
+      gap: 3.2552083333333335vw;
+      .form-card {
+        padding:2.9296875vw 2.6041666666666665vw;
+        display: flex;
+        justify-content: space-between;
+        background: #ffffff;
+        border: 1px solid #ababab;
+        border-radius:1.4322916666666667vw;
+        align-items: center;
+        .card-left {
+          gap: 0.9765625vw;
+          position: relative;
+          width: auto;
+          justify-content: flex-start;
+          display: flex;
+          .img-edit {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6510416666666666vw;
+            .photo-cont {
+              cursor: pointer;
+              display: flex;
+              width: 3.2552083333333335vw;
+              position: absolute;
+              height: 3.2552083333333335vw;
+              background: #ffffff;
+              padding: 7%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50vw;
+              box-shadow: 0px 0.1953125vw 0.4557291666666667vw rgba(0, 0, 0, 0.259);
+              bottom: 22%;
+              left: 0;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+              }
+            }
+            .img-cont {
+              width: 13.0859375vw;
+              height: 12.6953125vw;
+              img {
+                display: flex;
+                justify-content: center;
+                width: 90%;
+                height: 90%;
+                object-fit: contain;
+                border-radius: 32.552083333333336vw;
+              }
+            }
+            p {
+              font-family: "Rubik";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 0.8463541666666666vw;
+              line-height: 0.9765625vw;
+
+              color: #000000;
+
+              opacity: 0.75;
+            }
+          }
+
+          .card-text {
+            padding: 3% 0;
+            display: flex;
+            // justify-content: center;
+
+            flex-direction: column;
+            max-width: 14.973958333333334vw;
+            h1 {
+              font-family: "Rubik";
+              font-style: normal;
+              font-weight: 600;
+              font-size:3.123958333333334vw;
+              line-height: 103.5%;
+              /* or 3.2552083333333335vw */
+
+              letter-spacing: -0.015em;
+
+              color: #000000;
+              margin-bottom: 0.6510416666666666vw;
+            }
+            p {
+              font-family: "Rubik";
+              font-style: normal;
+              font-weight: 300;
+              font-size: 0.9765625vw;
+              line-height: 103.5%;
+              /* identical to box height, or 16px */
+
+              letter-spacing: -0.015em;
+
+              color: #000000;
+            }
+          }
+          .support-text {
+            h1 {
+              display: flex;
+              gap: 0.9765625vw;
+            }
+            max-width: none;
+            width: 90%;
+            p {
+                width: 75%;
+              font-style: normal;
+              font-weight: 300;
+              font-size: 1.2369791666666667vw;
+              line-height: 103.5%;
+              /* or 1.3020833333333333vw */
+
+              letter-spacing: -0.015em;
+
+              color: #000000;
+            }
+          }
+          .photo-edit {
+            cursor: pointer;
+            display: flex;
+            width: 3.2552083333333335vw;
+            height: 3.2552083333333335vw;
+            background: #000000;
+            padding: 3%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 32.552083333333336vw;
+            box-shadow: 0px 0.1953125vw 0.4557291666666667vw rgba(0, 0, 0, 0.259);
+            bottom: 22%;
+            right: 10%;
+            margin-top: 13%;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        }
+        .card-right {
+          gap: 0.9765625vw;
+          position: relative;
+          width: auto;
+          flex-direction: column;
+          justify-content: flex-start;
+          display: flex;
+          width: 40%;
+          align-items: flex-start;
+          label {
+            position: relative;
+            .card-uz {
+              position: absolute;
+              top: 20%;
+              left: 0.6510416666666666vw;
+              cursor: pointer;
+            }
+            input {
+              min-width: auto;
+              padding: 0.3255208333333333vw;
+              padding-left: 3.2552083333333335vw;
+              font-family: "Rubik";
+              font-style: normal;
+              font-weight: 400;
+              font-size:1.2050520833333331vw;
+              line-height: 103.5%;
+              /* or 1.2369791666666667vw */
+
+              letter-spacing: -0.015em;
+
+              color: #000000;
+              height: 3.4505208333333335vw;
+              background: #ffffff;
+              border: 1px solid #000000;
+              border-radius: 0.9114583333333334vw;
+            }
+            .longInput {
+              width: 30.013020833333332vw;
+            }
+          }
+          h1 {
+            font-family: "Rubik";
+            font-style: normal;
+            font-weight: 600;
+            font-size:2.0429231770833334vw;
+            line-height: 103.5%;
+            /* or 32px */
+
+            letter-spacing: -0.015em;
+
+            color: #000000;
+          }
+          button {
+            cursor: pointer;
+            gap: 0.6510416666666666vw;
+            width: auto;
+            display: flex;
+            height: 2.2786458333333335vw;
+            padding: 0.5208333333333334vw 2.2786458333333335vw;
+            background: #000000;
+            border-radius:0.637041015625vw;
+            align-items: center;
+            justify-content: center;
+            font-family: "Rubik";
+            font-style: normal;
+            font-weight: 400;
+            font-size:0.8271484375vw;
+            line-height: 103.5%;
+            /* or 0.8463541666666666vw */
+
+            letter-spacing: -0.015em;
+
+            color: #ffffff;
+            img {
+              width: 1.1067708333333333vw;
+            }
+          }
+        }
+       
+      }
+      .button-cont{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 5.208333333333333vw;
+        
+        button {
+            cursor: pointer;
+            gap: 0.6510416666666666vw;
+            width: auto;
+            display: flex;
+            height: auto;
+            padding: 0.78125vw 2.2786458333333335vw;
+            background: #000000;
+            border-radius:0.637041015625vw;
+            align-items: center;
+            justify-content: center;
+            font-family: "Rubik";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 1.3020833333333333vw;
+            line-height: 103.5%;
+            /* or 0.8463541666666666vw */
+
+            letter-spacing: -0.015em;
+
+            color: #ffffff;
+            img {
+              width: 1.1067708333333333vw;
+            }
+          }
+    }
+    }
+  }
+}
+
+a{text-decoration: none;}

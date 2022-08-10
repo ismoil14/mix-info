@@ -1,0 +1,104 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.row{
+    --bs-gutter-x: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+.buy-ok{
+    position: fixed;
+    top: -150%;
+    transition: 0.4s;
+    z-index: 500005;
+    background: linear-gradient(128.77deg, #1DE3CC 14.64%, #18E789 85.07%); 
+    align-items: center;
+    justify-content: center;
+    padding: 4.557291666666667vw 9.765625vw;
+    border-radius: 0.6510416666666666vw;
+    @media (max-width:500px){
+        width: 90%;
+        left: 5%;
+    }
+    @media (max-width:450px){
+        padding: 4.557291666666667vw 1.953125vw;
+    }
+    h1{
+        color: white;
+        text-align: center;
+    }
+    .fa-times{
+        position: absolute;
+        color: white;
+        top: 1.953125vw;
+        left: 1.953125vw;
+        font-size:1.8229166666666667vw;
+        cursor: pointer;
+    }
+    .btn{
+        padding: 0.6510416666666666vw2.6041666666666665vw;
+        margin-top:3.2552083333333335vw;
+        border: solid 2px white;
+        border-radius: 0.9765625vw;
+        color: white;
+        font-size:1.171875vw;
+        font-weight: 600;
+        -webkit-border-radius: 0.9765625vw;
+        -moz-border-radius: 0.9765625vw;
+        -ms-border-radius: 0.9765625vw;
+        -o-border-radius: 0.9765625vw;
+        &:hover{
+            background-color: white;
+            color: darkcyan;
+        }
+        @media (max-width:500px){
+            margin-top:1.3020833333333333vw;            
+        }
+    }
+}
+.show-modal{
+     top: 10%;
+}
+.contrast{
+    background-color: rgba(0, 0, 0, 0.699);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500003;
+}
+.loader{
+    .load{
+        border-radius: 50%;
+        width: 9.765625vw;
+        height: 9.765625vw;
+        border: solid 0.6510416666666666vw rgb(129, 117, 117);
+        border-left-color: #171717;
+        border-top-color: #272727;
+        animation-name: loader;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+}
+
+@keyframes loader {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+::-webkit-scrollbar{
+    height:0.3255208333333333vw;
+}

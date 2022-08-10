@@ -1,0 +1,100 @@
+.modal-container {
+    width: auto;
+    position: absolute;
+    height: auto;
+    z-index: 999999;
+    margin-top: 2vw;
+    top:3.1901041666666665vw;
+    right:-3.515625vw;
+.triangle{
+    width:2.2135416666666665vw;
+    position: absolute;
+    height:2.2135416666666665vw;
+    transform: rotate(45deg);
+    background: black;
+    right:3.2552083333333335vw;
+    top:-0.6510416666666666vw;
+}
+a{
+    text-decoration: none;
+}
+  .modal-rel {
+    width:26.041666666666668vw;
+    height: auto;
+    background: #000000;
+    box-shadow: 0px 0.5208333333333334vw 0.4557291666666667vw rgba(0, 0, 0, 0.22);
+    border-radius: 0.6510416666666666vw;
+    padding:3.90625vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3020833333333333vw;
+    .modal-img-cont {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6510416666666666vw;
+      align-items: center;
+      .img-cont {
+        width:9.5703125vw;
+        height:9.5703125vw;
+        border-radius:32.552083333333336vw;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .text-cont {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6510416666666666vw;
+        h1 {
+          font-family: "Rubik";
+          font-style: normal;
+          font-weight: 600;
+          font-size:1.7192317708333331vw;
+          line-height:2.0182291666666665vw;
+          color: #ffffff;
+        }
+        h3 {
+          font-family: "Rubik";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 0.7161458333333334vw;
+          line-height:0.8463541666666666vw;
+          color: #ffffff;
+        }
+      }
+    }
+    .button-cont {
+      display: flex;
+      flex-direction: column;
+      gap:0.9765625vw;
+      button {
+        border-radius: 0.7161458333333334vw;
+        width: 100%;
+        height: auto;
+        padding: 0.5208333333333334vw;
+        display: flex;
+        gap: 0.6510416666666666vw;
+        background-color: white;
+        color: #000000;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        font-size:1.2369791666666667vw;
+        transition: 0.5s;
+        line-height:1.4973958333333333vw;
+        border: 1px solid white;
+
+    &:hover {
+        cursor: pointer;
+        color: #ffffff;
+        background-color: transparent;
+
+    } 
+    }
+    }
+  }
+}

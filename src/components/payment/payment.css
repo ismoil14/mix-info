@@ -1,0 +1,186 @@
+.payment__box {
+  width: 100%;
+  padding:6.510416666666667vw;
+  margin-top: 13%;
+}
+.payment {
+  width: 100%;
+  background: #ffffff;
+  border:0.059895833333333336vw solid #000000;
+  border-radius:1.3671875vw;
+  padding: 2.4739583333333335vw 3.90625vw 3.515625vw 3.90625vw;
+  display: grid;
+  grid-template-columns: 0.9fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 5.208333333333333vw;
+}
+.payment__registration > input {
+  width: 23.763020833333332vw;
+  height: 2.7994791666666665vw;
+  outline: none;
+  padding: 0 1.6276041666666667vw;
+  background: #ffffff;
+  border:0.055338541666666664vw solid rgba(0, 0, 0, 0.23);
+  border-radius: 0.9114583333333334vw;
+}
+
+.payment__registration > input::placeholder {
+  font-weight: 400;
+  font-size: 0.9114583333333334vw;
+
+  letter-spacing: 0.005em;
+
+  color: #000000;
+}
+.district,
+.payment__registration > input:nth-child(3),
+.payment__registration > input:nth-child(2) {
+  margin-top:0.5859375vw;
+}
+.states {
+  padding-top:0.5859375vw;
+}
+.states > select {
+  width: 23.763020833333332vw;
+  height: 2.7994791666666665vw;
+  border:0.055338541666666664vw solid rgba(0, 0, 0, 0.23);
+  border-radius: 0.9114583333333334vw;
+  padding-left: 1.6276041666666667vw;
+  outline: none;
+  appearance: none;
+  background-image: url(./image/dropdownItem.svg);
+  background-repeat: no-repeat;
+  background-position: 21.809895833333332vw;
+  font-weight: 400;
+  font-size: 0.9114583333333334vw;
+
+  letter-spacing: 0.005em;
+
+  color: #000000;
+}
+.states > select > option {
+  height:3.2552083333333335vw;
+  border-radius: 0.6510416666666666vw !important;
+}
+.region {
+  margin-top:0.5859375vw;
+}
+.payment__right {
+  padding-top: 0.5208333333333334vw;
+}
+.payment__title {
+  font-weight: 700;
+  font-size:1.62109375vw;
+
+  letter-spacing: 0.005em;
+
+  color: #000000;
+}
+.information__about {
+  width:30.598958333333332vw;
+  font-weight: 300;
+  font-size:0.8463541666666666vw;
+  line-height: 120%;
+  letter-spacing: 0.005em;
+  color: #000000;
+  padding-top:0.2604166666666667vw;
+}
+.payment__system {
+  display: flex;
+  cursor: pointer;
+  margin-top:5.338541666666667vw;
+  height: 3.0598958333333335vw;
+  margin-left: -10.5208333333333334vw;
+  align-items: center;
+}
+.system > img {
+  object-fit: cover;
+}
+.system {
+  border: 0.09765625vw solid #fff;
+  border-radius:1.1067708333333333vw;
+  margin-left:0.390625vw;
+}
+.system:nth-child(4),
+.system:nth-child(1) {
+  padding: 0.3255208333333333vw 0.8463541666666666vw 0.13020833333333334vw;
+  border: 0.09765625vw solid #fff;
+  border-radius:1.1067708333333333vw;
+}
+.system_active {
+  border: 0.09765625vw solid #000 !important;
+}
+.shamelessness {
+  display: flex;
+  padding-top: 0.7161458333333334vw;
+}
+.shamelessness > p {
+  padding-left: 0.3255208333333333vw;
+  font-weight: 300;
+  font-size:0.8463541666666666vw;
+  line-height: 1.3020833333333333vw;
+
+  letter-spacing: 0.005em;
+
+  color: #000000;
+
+  opacity: 0.5;
+}
+.payment_submit {
+  display: flex;
+  padding-top: 1.5625vw;
+}
+.payment_submit > .btn__remove > p,
+.payment_submit > .btn__submit > p {
+  margin: 0;
+  font-weight: 400;
+  font-size:0.87890625vw;
+
+  letter-spacing: 0.005em;
+
+  color: #ffffff;
+}
+.btn_submit_active p{margin: 0;} 
+.payment_submit > .btn__remove {
+  background-color: #000;
+}
+.payment_submit > .btn__submit {
+  background: #000000;
+  opacity: 0.35;
+  cursor: pointer;
+  width:12.434895833333334vw;
+  height: 2.8645833333333335vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 1.4322916666666667vw;
+  margin-left: 2.0833333333333335vw;
+  border-radius:0.6832161458333332vw;
+}
+.payment_submit > .btn__remove {
+  cursor: pointer;
+  width:12.434895833333334vw;
+  height: 2.8645833333333335vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 1.4322916666666667vw;
+
+  border-radius:0.6832161458333332vw;
+}
+
+.btn_submit_active {
+  cursor: pointer;
+  width:12.434895833333334vw;
+  height: 2.8645833333333335vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 1.4322916666666667vw;
+  margin-left: 2.0833333333333335vw;
+  color: white;
+  border-radius:0.6832161458333332vw;
+  background-color: #000 !important;
+  font-weight: 400;
+  font-size:0.87890625vw;
+}
