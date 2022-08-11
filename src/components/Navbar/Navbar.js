@@ -2,6 +2,8 @@ import React, {
   // useEffect, useRef,
   useState,
 } from "react";
+import { useDispatch } from "react-redux";
+import { setOpenSideBar } from "../../Redux/Reducer/SideBar";
 import "./Scss/Navbar.scss";
 import { Link, useLocation } from "react-router-dom";
 // import Img1 from './images/logo.png'
@@ -15,6 +17,9 @@ import Modal from "../Modal";
 import logo from "./images/logoMix.png";
 import menu from "../Footer/images/menu.png";
 import home from "./images/home.png";
+
+
+
 const Navbar = ({
   seeAll,
   changeCategories,
@@ -38,6 +43,8 @@ const Navbar = ({
   const { pathname } = useLocation();
   const [innnerWidthI, setInnerWidthI] = useState(false);
 
+
+  const dispatch = useDispatch()
   function openMobile() {
     if (window.innerWidth < 850) {
       setInnerWidthI(true);
@@ -379,7 +386,8 @@ salom
               >
                 <div
                   className="category-menu"
-                  onClick={() => openCategory(true)}
+                  onClick={() => {openCategory(true);dispatch(setOpenSideBar(!catBar))}}
+
                 >
                   {/* {console.log(catBar, "catBar")} */}
                   {/* <i

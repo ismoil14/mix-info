@@ -50,12 +50,7 @@
             @media (max-width:900px){                  
                 font-size: 2.6041666666666665vw;                                        
             }            
-            @media (max-width:430px){                    
-                font-size: 2.2786458333333335vw;
-            }
-            @media (max-width:380px){                    
-                font-size: 1.953125vw;
-            }
+           
         }
         .row{
             margin-top: 3.2552083333333335vw;
@@ -80,12 +75,7 @@
                     @media (max-width:950px){
                         // height: 22.786458333333332vw;
                     }
-                    @media (max-width:500px){
-                        // height: 19.53125vw;
-                    }
-                    @media (max-width:400px){
-                        // height:  17.578125vw;
-                    }
+                   
 
                     img{
                         top: 0;
@@ -225,9 +215,14 @@ line-height: 1.6927083333333333vw;
     }
 }
 
+
+.Category .slick-slide{
+    transform: scale(0.8);
+}
 .Category .slick-current{
     transform: scale(1.1);
 }
+
 .Category .mySliderMile{
     display: none;
     @media(max-width:768px)

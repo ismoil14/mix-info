@@ -26,13 +26,7 @@ html{
     justify-content: center;
     padding: 4.557291666666667vw 9.765625vw;
     border-radius: 0.6510416666666666vw;
-    @media (max-width:500px){
-        width: 90%;
-        left: 5%;
-    }
-    @media (max-width:450px){
-        padding: 4.557291666666667vw 1.953125vw;
-    }
+   
     h1{
         color: white;
         text-align: center;
@@ -61,9 +55,7 @@ html{
             background-color: white;
             color: darkcyan;
         }
-        @media (max-width:500px){
-            margin-top:1.3020833333333333vw;            
-        }
+      
     }
 }
 .show-modal{

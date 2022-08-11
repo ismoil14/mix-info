@@ -91,7 +91,7 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
   ];
 
   const settings = {
-    centerMode: true,
+    // centerMode: true,
     centerPadding: '160px',
     slidesToShow: 1,
     responsive: [
@@ -109,7 +109,7 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
         settings: {
           arrows: false,
           centerMode: true,
-          centerPadding: '140px',
+          centerPadding: '80px',
           slidesToShow: 1
         }
       }
@@ -247,7 +247,11 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
             </div>
           ))}
         </div>
-        <div className="col-md-12 row mySliderMile"> <Slider {...settings}>
+        <div className="col-md-12 row mySliderMile">
+          
+          
+          
+           <Slider {...settings}>
         {dataCategories.map((data, index) => (
           
             <div className="col-md-6 one" key={index}>

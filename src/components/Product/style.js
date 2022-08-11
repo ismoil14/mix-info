@@ -122,10 +122,15 @@ Card.Img = styled.img`
 `;
 
 Card.Footer = styled.div`
+
+@media(max-width:410px){
+    height: 23%;
+  }
   display: flex;
   flex-direction: column;
   // align-items: flex-start;
   padding:0.6510416666666666vw 0.6510416666666666vw ;
+
   p {
     font-style: normal;
     font-weight: 800;

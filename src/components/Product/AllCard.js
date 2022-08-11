@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
 import {
   Card,
 
 } from "./style";
-import { Link } from "react-router-dom";
 import "./Scss/Prod.scss";
-import axios from "axios";
 import Shop from "./images/bag.png";
 import { t } from "i18next";
 import { Electronics, ProdName, CardData } from "../../utils/electronics";
@@ -26,34 +28,21 @@ import Blog from '../Blog/Blog';
 
 
 
-
 export default function AllCard({
   allResult,
   addCountAdd,
   addCountLike,
   deletCountLike,
   dataBlogs ,
-  changeTips,
   subTips,
   english,
   russian,
   uzbek,
-  urlLikes,
   changeModal,
   all,
-  saved,
-  top,
-  card,
-  oneProd,
-  id,
-  name,
   image,
   image1,
   image2,
-  desc,
-  code,
-  price,
-  category,
 }) {
     
   const [allCat, setAllCat] = useState(false);
@@ -63,6 +52,8 @@ export default function AllCard({
   for (let i = 0; i < radio.length; i++) {
     radio[0].setAttribute("checked", "true");
   }
+  const {open}=useSelector(({sideBar})=>sideBar)
+  console.log("open",open)
 
   // tips of products
 
@@ -422,7 +413,7 @@ export default function AllCard({
   }
 
   return (
-    <div className="AllProd">
+    <div style={open === true ? {paddingLeft:"400px"}:{}}  className="AllProd">
       {all && (
         <div className="products allCard row">
           {CardData.map((value) => {
