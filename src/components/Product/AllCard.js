@@ -413,7 +413,11 @@ export default function AllCard({
   }
 
   return (
-    <div style={open === true ? {paddingLeft:"400px"}:{}}  className="AllProd">
+    <div 
+    
+    className={`AllProd ${open && "prod-pedding"}`}
+    // style={open === true ? {paddingLeft:"400px"}:{}}  className="AllProd"
+    >
       {all && (
         <div className="products allCard row">
           {CardData.map((value) => {

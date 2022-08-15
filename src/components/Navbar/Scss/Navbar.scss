@@ -1385,25 +1385,28 @@
   }
 
   .Navbar .category-menu .category-tools {
-    right: 0;
+  //   right: 0;
     width: 100%;
-    position: fixed;
-    background: #00000070;
-    height: 100%;
-    margin-top: 5%;
-    max-height: none;
-    height: 90%;
-    overflow: visible;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 4.8828125vw;
-    left: 0;
-    padding-top: 10%;
+  //   position: fixed;
+  //   background: #00000070;
+  //   height: 100%;
+  //   margin-top: 5%;
+  //   max-height: none;
+    height:auto;
+  //   overflow: visible;
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   top: 4.8828125vw;
+  //   left: 0;
+  //   padding-top: 10%;
+  width: 100%;
+  height: auto;
+  left: 0;
+  overflow: visible;
   }
   .Navbar .category-menu .category-tools .nav-link {
     background: white;
-    width: 80%;
     font-size: 3vw;
   }
   .About .wrapper1 .partners .list img {
@@ -1821,4 +1824,82 @@
     }
 }
 
+.Prod .wrapper .one-product .row .g0 {
+  display: none;
+}
 
+
+@media (max-width: 500px) {
+  
+  .products .prod {
+    width: 49%;
+}
+.products .prod .navigator {
+  width: 164.19px;
+  height: 175.66px;
+}
+
+.products .prod .navigator .top-left {
+  width: 27.27px !important;
+  height: 12.46px !important;
+  font-weight: 600;
+  font-size: 7.32389px;
+  line-height: 130%;
+  text-align: center;
+  letter-spacing: 0.008em;
+  border-radius: 0px 0px 3.05162px 0px;
+}
+.products .prod .navigator .left-tools .icon {
+  width: 23.71px !important;
+  height: 23.74px !important;
+  background: #FFFFFF;
+  box-shadow: 0px 1.22065px 20.1407px rgba(0, 0, 0, 0.123);
+  i{
+    font-size: 12px;
+  }
+  .add-btn{    width: 12px;
+    height: 12px;}
+}
+.products .prod .navigator .left-tools .icon  {
+  width: 40%;
+}
+
+.products .prod .body h2 {
+  font-weight: 400;
+  font-size: 1.3020833333333333vw;
+  line-height: 120%;
+  font-weight: 400;
+  font-size: 12.2065px;
+  line-height: 120%;
+}.products .prod .card-bottom h3 {
+  font-weight: 700;
+  font-size: 10.9858px;
+  line-height: 120%;
+  text-align: center;
+  letter-spacing: 0.005em;
+}
+}
+
+.prod-pedding{
+  padding-left: 400px;
+  @media(max-width: 1100px){
+    padding-left: 3vw;
+  }
+  .products .prod .navigator .left-tools .icon .cache {
+    font-size: 14px;
+}.products .prod .card-bottom {
+  display: flex;
+  .MuiBox-root-2 {
+    height: auto;
+    display: flex;
+}
+}
+
+.Navbar .category-menu {
+  width: 125px !important;
+  height: 32.21px !important;
+  font-size: 7.69231px;
+line-height: 9px;
+letter-spacing: 0.02em;
+}
+}

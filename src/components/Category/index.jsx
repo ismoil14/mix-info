@@ -1,8 +1,8 @@
 import React from "react";
 import "./Scss/Categories.scss";
 import Img1 from "./images/b1.png";
-import Img2 from "./images/b2.png";
-import Img3 from "./images/b3.png";
+import Img3 from "../../assets/imgs/slid.png";
+import Img2 from "./images/b3.png";
 import { Link } from "react-router-dom";
 import { ArrowForward } from "@material-ui/icons";
 import Slider from 'react-slick';
@@ -10,7 +10,7 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
   const dataCategories = [
     {
       id: 1,
-      image: Img1,
+      image: Img3,
       name_uz: "Modern Furniture Collections",
       name_ru: "Modern Furniture Collections",
       name_en: "Modern Furniture Collections",

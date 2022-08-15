@@ -445,7 +445,10 @@ export const Products = ({
 
   return (
     <>
-      <div className="Prod">
+      <div 
+      // className="Prod"
+        className={`Prod ${pathname.slice(1,10)}Prod`}
+      >
         <div style={
           pathname == '/' ?
           {marginTop:'0',paddingTop:'0'}:{}} className="wrapper">
