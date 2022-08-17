@@ -857,6 +857,13 @@
     justify-content: space-between;
     padding: 30px;
     align-items: center;
+
+    .mobile-item-nav{
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      width: 30%;
+    }
     .toMobile {
       width: 90px;
       height: 90px !important;
@@ -1060,21 +1067,21 @@
   .About .wrapper1 p {
     font-size: 1.911458vw !important;
   }
-  .Prod .wrapper .products .prod .navigator {
+  .ProdMobile .wrapper .products .prod .navigator {
     height: 200px !important;
   }
   .leftLinkSlid .slick-track {
     width: auto !important;
   }
-  .Prod .wrapper .products .prod p,
-  .Prod .wrapper .products .prod h2,
-  .Prod .wrapper .products .prod h3 {
+  .ProdMobile .wrapper .products .prod p,
+  .ProdMobile .wrapper .products .prod h2,
+  .ProdMobile .wrapper .products .prod h3 {
     font-size: 2.5vw !important;
   }
-  .Prod .wrapper .products .prod .navigator .top-left {
+  .ProdMobile .wrapper .products .prod .navigator .top-left {
     font-size: 10px !important;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon {
     width: 26px !important;
     height: 26px !important;
   }
@@ -1174,7 +1181,7 @@
     display: block;
     width: 305px !important;
   }
-  .Prod .wrapper .products .prod {
+  .ProdMobile .wrapper .products .prod {
     width: 41% !important;
     border-radius: 13.2347px !important;
     overflow: hidden;
@@ -1187,7 +1194,7 @@
       border-radius: 0.6510416666666666vw;
     }
   }
-  .Prod .wrapper .products {
+  .ProdMobile .wrapper .products {
     align-items: center;
     padding: 0;
     position: relative;
@@ -1238,7 +1245,7 @@
     display: none;
   }
 
-  .Prod .wrapper .products .prod .body {
+  .ProdMobile .wrapper .products .prod .body {
     background-color: white;
 
     .navigator {
@@ -1250,39 +1257,39 @@
   .Prod {
     background-color: #f8f8f8 !important;
   }
-  .Prod .wrapper .products .prod .navigator .top-left {
+  .ProdMobile .wrapper .products .prod .navigator .top-left {
     display: none;
   }
-  .Prod .wrapper .products .prod p,
-  .Prod .wrapper .products .prod h2,
-  .Prod .wrapper .products .prod h3 {
+  .ProdMobile .wrapper .products .prod p,
+  .ProdMobile .wrapper .products .prod h2,
+  .ProdMobile .wrapper .products .prod h3 {
     font-size: 3.5vw !important;
     font-weight: 700;
   }
-  .Prod .wrapper .products .prod .card-bottom .old-price {
+  .ProdMobile .wrapper .products .prod .card-bottom .old-price {
     display: none;
   }
-  .Prod .wrapper .products .prod .card-bottom .MuiBox-root {
+  .ProdMobile .wrapper .products .prod .card-bottom .MuiBox-root {
     display: none;
   }
 
-  .Prod .wrapper .products .prod .navigator .contr-navigator {
+  .ProdMobile .wrapper .products .prod .navigator .contr-navigator {
     background: transparent !important;
     border-radius: 11.1986px !important;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon .add-btn img {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon .add-btn img {
     width: 40px;
     height: 18px;
     object-fit: contain !important;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon .add-btn {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon .add-btn {
     width: 100%;
   }
 
-  .Prod .wrapper .products .prod .navigator .left-tools .icon {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon {
     display: none;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon:nth-child(1) {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon:nth-child(1) {
     position: absolute;
     bottom: -84px;
     left: -6vw;
@@ -1292,7 +1299,7 @@
     box-shadow: 0px 2.26692px 37.4041px rgba(0, 0, 0, 0.09);
     display: flex;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon:nth-child(2) {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon:nth-child(2) {
     position: absolute;
     bottom: -84px;
     left: -100px;
@@ -1302,7 +1309,7 @@
     box-shadow: 0px 2.26692px 37.4041px rgba(0, 0, 0, 0.09);
     display: flex;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon i {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon i {
     font-size: 15px;
   }
   .Prod .wrapper .menu-catalog .catalog-menu input:checked ~ label .tool {
@@ -1487,10 +1494,10 @@
   .explore {
     display: none;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon:nth-child(2) {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon:nth-child(2) {
     bottom: -71px;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon:nth-child(1) {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon:nth-child(1) {
     bottom: -71px;
   }
 
@@ -1568,17 +1575,17 @@
   .Category .title .fa-heart-o {
     display: none;
   }
-  .Prod .wrapper .products .prod {
+  .ProdMobile .wrapper .products .prod {
     width: 52% !important;
     border-radius: 13.2347px !important;
     overflow: hidden;
     padding: 7px;
     background-color: white;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon:nth-child(2) {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon:nth-child(2) {
     bottom: -13vw;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon:nth-child(1) {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon:nth-child(1) {
     bottom: -13vw;
   }
   .Prod .wrapper .menu-catalog .line-menu {
@@ -1684,19 +1691,19 @@
 }
 
 @media (max-width: 400px) {
-  .Prod .wrapper .products .prod {
+  .ProdMobile .wrapper .products .prod {
     width: 196.48px !important;
     height: 282px;
   }
-  .Prod .wrapper .products .prod .body {
+  .ProdMobile .wrapper .products .prod .body {
     background-color: white;
     height: 100%;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon:nth-child(2) {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon:nth-child(2) {
     bottom: -16vw;
     left: -95px;
   }
-  .Prod .wrapper .products .prod .navigator .left-tools .icon:nth-child(1) {
+  .ProdMobile .wrapper .products .prod .navigator .left-tools .icon:nth-child(1) {
     bottom: -16vw;
     left: -11vw;
   }
@@ -1813,7 +1820,7 @@
     font-size: 4.87513px !important;
     line-height: 10px !important;
   }
-  .Prod .wrapper .products {
+  .ProdMobile .wrapper .products {
     padding-left: 20vw !important;
   }
   .About .wrapper1 .AboutCont .__iframe {

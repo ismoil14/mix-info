@@ -262,6 +262,11 @@
         }
        
       }
+      .form-card-password{
+        @media(max-width:400px){
+
+        }
+      }
       .button-cont{
         display: flex;
         justify-content: center;
@@ -299,3 +304,9 @@
 }
 
 a{text-decoration: none;}
+
+@media (max-width: 768px){
+  .mobileNone{
+    display: none !important;
+  }
+}

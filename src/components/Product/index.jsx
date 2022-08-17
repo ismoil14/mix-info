@@ -447,7 +447,7 @@ export const Products = ({
     <>
       <div 
       // className="Prod"
-        className={`Prod ${pathname.slice(1,10)}Prod`}
+        className={`Prod ${pathname.slice(1,10)}ProdMobile`}
       >
         <div style={
           pathname == '/' ?
@@ -1483,8 +1483,8 @@ export const Products = ({
                   активностью,панели не бояться прямого попадания брызг.
                 </p>
               </div>
-              <h3 className="recommend text-white">{t("recommend")}:</h3>
-              <div className="col-12 slide-tools">
+              <h3 className="recommend text-white mobileNone">{t("recommend")}:</h3>
+              <div className="col-12 slide-tools mobileNone">
                 <div className="d-flex c2">
                   <i
                     className={`fa fa-angle-left ${activeSlick && "active"}`}
@@ -1498,7 +1498,7 @@ export const Products = ({
                   ></i>
                 </div>
               </div>
-              <div className="products row top">
+              <div className="products row top mobileNone">
                 {CardData.map((value) => {
                   return (
                     value.id != id && (

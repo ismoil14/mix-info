@@ -254,7 +254,7 @@ const Navbar = ({
                       >
                         {dataProducts.map((data,index) => (
                           <Link
-                            to={`/product/${data.id}`}
+                            to={`/products/${data.id}`}
                             key={index}
                             className="result nav-link px-0"
                             onClick={() => clickedSearch(false)}
@@ -469,7 +469,8 @@ salom
                 </ul>
 
                 <ul className="mobile_bottom">
-                  <li className="nav-item">
+
+                  <div className="mobile-item-nav">                  <li className="nav-item">
                     <Link to="/" className="nav-link">
                     <img src={home} alt="" />
                       HOME
@@ -483,7 +484,8 @@ salom
                       </i>
                       LIKE
                     </Link>
-                  </li>
+                  </li></div>
+
 
 
 
@@ -494,8 +496,7 @@ salom
                     </Link>
                   </li>
 
-
-                  <li className="nav-item">
+<div className="mobile-item-nav">  <li className="nav-item">
                     <Link to="/cart" className="nav-link mall">
                       <LocalMallOutlined className="local" />
                       <span>{countAdd}</span>
@@ -514,7 +515,8 @@ salom
                     <Modal openModal={openModal} />
                    
                     
-                  </li>
+                  </li></div>
+                
                 </ul>
               </div>
             </>
