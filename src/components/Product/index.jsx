@@ -977,7 +977,7 @@ export const Products = ({
                         </div>
                       </div> */}
 
-                      <div className="col-2 middle">
+                      <div className="col-2 middle piliusMInus">
                         <div className="tools">
                           <div className="d-flex col-4">
                             <div
@@ -1003,7 +1003,7 @@ export const Products = ({
                           </h4>
                         </div>
                       </div>
-                      <div className="col-2 middle">
+                      <div className="col-2 middle priceI">
                         <div className="tools">
                           <div className="d-flex col-4">
                             {/* {countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num) : item.count} */}
@@ -1449,7 +1449,16 @@ export const Products = ({
                 ) : (
                   ""
                 )} */}
-
+  <label className="post-love">
+                                <i
+                                
+                                  className={`fa fa-heart-o`}
+                                ></i>
+                                <i
+                                  
+                                  className={`fa fa-heart`}
+                                ></i>
+                              </label>
                 <div className="discription"></div>
                 <h3 className="description mt-5">Description</h3>
                 <p>

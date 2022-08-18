@@ -192,9 +192,342 @@ const Navbar = ({
               </div>
             </li>
           </div>
-          {pathname !== "/profile" &&
+          { pathname !== "/profile" && 
           pathname !== "/orders" &&
           pathname !== "/logout" ? (
+            <>
+              {" "}
+              <div className="navbar-top">
+                <ul className={`navbar-nav`}>
+                  <li
+                    className="nav-item img"
+                    onClick={() => clickedSearch(false)}
+                  >
+                    <Link to="/" className="nav-link">
+                      <img src={logo} alt="..." />
+                      {/* <h1 className="text-dark">MIXINFO</h1> */}
+                    </Link>
+                  </li>
+                  <li className="nav-item header-menu">
+                    <div className="search-bar">
+                      <input
+                        type="search"
+                        className={`${searchBar && "active"}`}
+                        value={inputValue}
+                        onChange={(e) => typeInput(e)}
+                        placeholder="Search..."
+                      />
+                      <div
+                        className="category-menu1"
+                        onClick={() => openCategory1(true)}
+                      >
+                        <span>Categories</span>{" "}
+                        <i className={`fa fa-angle-down d-block mx-2`}></i>
+                        <div
+                          className={`category-tools ${!catBar1 && "d-none"}`}
+                        >
+                          {allCategories.map((data,index) => (
+                            <Link
+                              to="/products"
+                              key={index}
+                              className="result nav-link px-0"
+                              onClick={() => localId(data.id)}
+                            >
+                              <p>
+                                {english && data.name_en}{" "}
+                                {uzbek && data.name_uz}{" "}
+                                {russian && data.name_ru}
+                              </p>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                      {/* <select className="category" name="navbar" id="">
+                                      <option value="category">category</option>
+                                    </select> */}
+
+                      <i className="fa fa-search"></i>
+                      <div
+                        className={`search-filter ${
+                          inputValue === "" && "d-none"
+                        }`}
+                      >
+                        {dataProducts.map((data,index) => (
+                          <Link
+                            to={`/products/${data.id}`}
+                            key={index}
+                            className="result nav-link px-0"
+                            onClick={() => clickedSearch(false)}
+                          >
+                            {english && data.name_en} {russian && data.name_ru}{" "}
+                            {uzbek && data.name_uz}
+                            <i
+                              className="fa fa-long-arrow-right"
+                              aria-hidden="true"
+                            ></i>
+                          </Link>
+                        ))}
+                        {dataCategories.map((data,index) => (
+                          <Link
+                            to="/products"
+                            key={index}
+                            className="result nav-link px-0"
+                            onClick={() => localId(data.id)}
+                          >
+                            {english && data.name_en} {russian && data.name_ru}{" "}
+                            {uzbek && data.name_uz}
+                            <i
+                              className="fa fa-long-arrow-right"
+                              aria-hidden="true"
+                            ></i>
+                          </Link>
+                        ))}
+                        {dataSubCategories.map((data,index) => (
+                          <Link
+                            to="/products"
+                            key={index}
+                            className="result nav-link px-0"
+                            onClick={() => localId(data.category, data.id)}
+                          >
+                            {english && data.name_en} {russian && data.name_ru}{" "}
+                            {uzbek && data.name_uz}
+                            <i
+                              className="fa fa-long-arrow-right"
+                              aria-hidden="true"
+                            ></i>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </li>
+                  {/* <li className="nav-item" onClick={() => clickedSearch(false)}>
+                <div className="d-flex align-items-center justify-content-between">
+                  <div className="language d-flex align-items-center justify-content-between">
+                    <div
+                      className={`change-language`}
+                      onClick={() => clickedSearch(false)}
+                    >
+                      <input
+                        type="checkbox"
+                        id="language"
+                        checked={language}
+                        onChange={() => setLanguage(!language)}
+                      />
+                      <label htmlFor="language">
+                        {langTitle} <KeyboardArrowDown className="icon" />
+                      </label>
+                      <ul className={`language-menu ${!language && "d-none"}`}>
+                        <li
+                          onClick={() => changeHandle1()}
+                          className="nav-link"
+                        >
+                          RU
+                        </li>
+                        <li
+                          onClick={() => changeHandle2()}
+                          className="nav-link"
+                        >
+                          ENG
+                        </li>
+                        <li
+                          onClick={() => changeHandle3()}
+                          className="nav-link"
+                        >
+                          UZ
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  |
+                  <Link to="/login" className="nav-link login">
+                    Login or Sign up
+                  </Link>
+                </div>
+              </li> */}
+                  <ul
+                    // className="navbar-nav icons"
+                    className={`navbar-nav icons ${open === false && "stickyT"}
+              `}
+                  >
+                    <li className="nav-item">
+                      <Link to="/saved" className="nav-link">
+                        <i className="fa fa-heart-o">
+                          <span>{countLike}</span>
+                        </i>
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/cart" className="nav-link mall">
+                        <LocalMallOutlined className="local" />
+                        <span>{countAdd}</span>
+                      </Link>
+                    </li>
+                    <li
+                      className="nav-item"
+                      // onMouseDown={()=>setOpenModal(!openModal)}
+                      onClick={() => setOpenModal(!openModal)}
+                    >
+                      <Link to="/" className="nav-link">
+                        <i className="fa fa-user-o"></i>
+                      </Link>
+                      <Modal openModal={openModal} />
+                    </li>
+                  </ul>
+                </ul>
+              </div>
+              <div onLoad={openMobile}></div>
+              {/* {innnerWidthI === true ? <div >
+salom
+</div>:''} */}
+              <div
+                className={`bottom-navbar ${open === false && "fixed"}
+                `}
+                id={`nav`}
+              >
+                <div
+                  className="category-menu"
+                  onClick={() => {openCategory(true);dispatch(setOpenSideBar(!catBar))}}
+
+                >
+                  {/* {console.log(catBar, "catBar")} */}
+                  {/* <i
+                className={`fa fa-bars d-block mx-2 ${catBar && "d-none"}`}
+              ></i>{" "} */}
+                  <img  className={catBar && "d-none"} src={menu} alt="" />
+
+                  <Close className={`times d-block z-close mx-2 ${!catBar && "d-none"}`} />{" "}
+                  <span>ALL COLLECTIONS</span>
+                  <div
+                    className={`category-tools ${
+                      ((window.innerWidth >870)&(open === true) & (pathname === "/") && "d-block") ||
+                      (!catBar && "d-none")
+                    }
+                `}
+                  >
+                    <Link
+                      to="/products"
+                      className="result nav-link px-0 border-0"
+                      onClick={() => seeAll()}
+                    >
+                      <p>All</p>
+                    </Link>
+                    <a
+                      href="/#hotsale"
+                      className="result nav-link px-0"
+                      onClick={() => changeCategories(1)}
+                    >
+                      <p>Hot Sale</p>
+                    </a>
+                    {allCategories.map((data,index) => (
+                      <Link
+                        to="/products"
+                        key={index}
+                        className="result nav-link px-0"
+                        onClick={() => changeCategories(data.id)}
+                      >
+                        <p>
+                          {english && data.name_en} {uzbek && data.name_uz}{" "}
+                          {russian && data.name_ru}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <ul
+                  className={`navbar-nav main-menu ${show && "show"}`}
+                  onClick={() => clickedSearch(false)}
+                >
+                  <li className="nav-item">
+                    <Link to="/" className="nav-link">
+                      HOME
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/products" className="nav-link">
+                      SHOP
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/blog" className="nav-link">
+                      BLOG
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/aboutus" className="nav-link">
+                      ABOUT
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/profile" className="nav-link">
+                      CONTACT US
+                    </Link>
+                  </li>
+                  <Close
+                    className="fa fa-times"
+                    onClick={() => setShow(false)}
+                  />
+                </ul>
+
+                <ul className="mobile_bottom">
+
+                  <div className="mobile-item-nav">                  <li className="nav-item">
+                    <Link to="/" className="nav-link">
+                    <img src={home} alt="" />
+                      HOME
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link to="/saved" className="nav-link">
+                      <i className="fa fa-heart-o">
+                        <span>{countLike}</span>
+                      </i>
+                      LIKE
+                    </Link>
+                  </li></div>
+
+
+
+
+                  <li className="nav-item">
+                    <Link to="/" className="nav-link toMobile">
+                    <img src={logo} alt="" />
+                   
+                    </Link>
+                  </li>
+
+<div className="mobile-item-nav">  <li className="nav-item">
+                    <Link to="/cart" className="nav-link mall">
+                      <LocalMallOutlined className="local" />
+                      <span>{countAdd}</span>
+                      BASKET
+                    </Link>
+                  </li>
+                  <li
+                    className="nav-item"
+                    // onMouseDown={()=>setOpenModal(!openModal)}
+                    onClick={() => setOpenModal(!openModal)}
+                  >
+                    <Link to="/" className="nav-link">
+                      <i className="fa fa-user-o"></i>
+                      HOME
+                    </Link>
+                    <Modal openModal={openModal} />
+                   
+                    
+                  </li></div>
+                
+                </ul>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
+
+
+{window.innerWidth <800 && pathname === "/profile" || 
+          pathname === "/orders" ||
+          pathname === "/logout" ? (
             <>
               {" "}
               <div className="navbar-top">
@@ -521,8 +854,12 @@ salom
               </div>
             </>
           ) : (
-            ""
+            "dddd"
           )}
+
+
+
+          
         </nav>
       </div>
       <div

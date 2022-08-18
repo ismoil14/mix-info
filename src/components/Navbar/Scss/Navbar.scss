@@ -1892,6 +1892,11 @@
   @media(max-width: 1100px){
     padding-left: 3vw;
   }
+  
+}
+@media(max-width:500px){
+  
+.AllProd{
   .products .prod .navigator .left-tools .icon .cache {
     font-size: 14px;
 }.products .prod .card-bottom {
@@ -1901,7 +1906,9 @@
     display: flex;
 }
 }
-
+.products .prod .navigator .left-tools .icon .eye {
+  font-size: 3.627604vw;
+}
 .Navbar .category-menu {
   width: 125px !important;
   height: 32.21px !important;
@@ -1909,4 +1916,19 @@
 line-height: 9px;
 letter-spacing: 0.02em;
 }
+
+}   
+}
+
+.z-close{
+ 
+    color: white !important;
+    font-size: 1.195313vw !important;
+    @media(max-width:500px){
+      color: white !important;
+    font-size: 2.195313vw !important;
+    padding: 0 !important;
+    width: auto !important;
+    margin: 0 !important;
+    }
 }
