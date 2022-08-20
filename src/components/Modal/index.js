@@ -15,8 +15,8 @@ export default function Modal({openModal}) {
                 <img src={Avatar} alt="..." />
               </div>
               <div className="text-cont">
-                <h1 className="full-name">Sadulla Kobiljonov</h1>
-                <h3 className="number-tel">+998 99 011 89 34</h3>
+                <h1 className="full-name">Ismoil Mo'minov</h1>
+                <h3 className="number-tel">+998 99 515 32 38</h3>
               </div>
             </div>
             <div className="button-cont">

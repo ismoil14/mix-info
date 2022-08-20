@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Card,
-  CategoryTitles,
-
-} from "./style";
+import { Card, CategoryTitles } from "./style";
 import { Link, useLocation } from "react-router-dom";
 import "./Scss/Prod.scss";
 import axios from "axios";
@@ -19,7 +15,9 @@ import {
   Visibility,
 } from "@material-ui/icons";
 // import ShareIcon from '@mui/icons-material/Share';
-import ShareIconImg from './images/share.png';
+import ShareIconImg from "./images/share.png";
+import commit from "../../assets/imgs/commit.png";
+import bass from "../../assets/imgs/bass.png";
 import { Rating } from "@mui/material";
 import { Box } from "@material-ui/core";
 import Corousel from "../Corousel";
@@ -54,14 +52,15 @@ export const Products = ({
   price,
   category,
 }) => {
+  console.log('price',price)
   //Electronics, ProdName, CardData,//
 
   // categories
-  const info= {
-    text:'У вас нет заказов',
-    info:"чтобы закасать переходите кудата и нажмите что то",
-    img:note
-}
+  const info = {
+    text: "У вас нет заказов",
+    info: "чтобы закасать переходите кудата и нажмите что то",
+    img: note,
+  };
   const { pathname } = useLocation();
   const [allCat, setAllCat] = useState(false);
 
@@ -139,7 +138,6 @@ export const Products = ({
     );
   });
 
-
   // add to card
 
   const [addedProds, setAddedProds] = useState(
@@ -199,7 +197,8 @@ export const Products = ({
       countProd.map((c) => c.num)
     );
   });
-
+// const [addProdColk, setAddProdColk] = useState(0);
+console.log(countProd,'countProd')
   function incProd(item) {
     setCountProd(
       countProd.map((c) => ({
@@ -395,21 +394,18 @@ export const Products = ({
   const [oneData, setOneData] = useState(CardData);
   const [isModal, setIsModal] = useState(false);
 
-  
-  if(isModal){
+  if (isModal) {
     document.body.classList.add("is-modal");
-  }
-  else{
+  } else {
     document.body.classList.remove("is-modal");
   }
   function filterData(item) {
     const newOneData = oneData.filter((data) => data.id == item);
     setOneData(newOneData);
     setIsModal(true);
-    console.log(isModal,'isModal')
-    if(isModal === true){
-  document.body.classList.add('is-modal');
-
+    console.log(isModal, "isModal");
+    if (isModal === true) {
+      document.body.classList.add("is-modal");
     }
   }
 
@@ -445,13 +441,14 @@ export const Products = ({
 
   return (
     <>
-      <div 
-      // className="Prod"
-        className={`Prod ${pathname.slice(1,10)}ProdMobile`}
+      <div
+        // className="Prod"
+        className={`Prod ${pathname.slice(1, 10)}ProdMobile`}
       >
-        <div style={
-          pathname == '/' ?
-          {marginTop:'0',paddingTop:'0'}:{}} className="wrapper">
+        <div
+          style={pathname == "/" ? { marginTop: "0", paddingTop: "0" } : {}}
+          className="wrapper"
+        >
           {all && (
             <CategoryTitles>
               <div className={`col-md-12 menu-catalog d-flex`}>
@@ -562,8 +559,11 @@ export const Products = ({
                               </label>
                             </div>
                             <div className="icon">
-
-<img src={ShareIconImg} alt="..."   className="cache"/>
+                              <img
+                                src={ShareIconImg}
+                                alt="..."
+                                className="cache"
+                              />
 
                               {/* <ShareIconImg className="cache" /> */}
                             </div>
@@ -609,13 +609,13 @@ export const Products = ({
           )}
 
           {saved && (
-            <><h1 className="text-dark">
-              {/* <i className="fa fa-heart"></i> */}
-              За лайконные товары
-            </h1>
-<p>что бы яохранить товаров за лайкните</p>
-</>
-            
+            <>
+              <h1 className="text-dark">
+                {/* <i className="fa fa-heart"></i> */}
+                За лайконные товары
+              </h1>
+              <p>что бы яохранить товаров за лайкните</p>
+            </>
           )}
 
           {saved && (
@@ -699,7 +699,11 @@ export const Products = ({
                               </label>
                             </div>
                             <div className="icon">
-                            <img src={ShareIconImg} alt="..."   className="cache"/>
+                              <img
+                                src={ShareIconImg}
+                                alt="..."
+                                className="cache"
+                              />
                               {/* <ShareIconImg  className="cache" /> */}
                             </div>
                             <div
@@ -740,21 +744,20 @@ export const Products = ({
                   </Card>
                 );
               })}
-                        <div className="button-cont">
-            <Link to="/">
-              <button>
-                {" "}
-                <i className="fa fa-long-arrow-left"></i>
-                Вернутся на главную страницу
-              </button>{" "}
-            </Link>
-          </div>
+              <div className="button-cont">
+                <Link to="/">
+                  <button>
+                    {" "}
+                    <i className="fa fa-long-arrow-left"></i>
+                    Вернутся на главную страницу
+                  </button>{" "}
+                </Link>
+              </div>
             </div>
           )}
 
           {top && (
             <h1 id="hotsale" className="hot">
-              
               HOT SALES
             </h1>
           )}
@@ -763,7 +766,7 @@ export const Products = ({
             <CategoryTitles>
               <div className={`col-md-12 menu-catalog d-flex`}>
                 <div className="line-menu">
-                  {Electronics.map((value,index) => {
+                  {Electronics.map((value, index) => {
                     return (
                       <div className="catalog-menu" key={index}>
                         <input
@@ -871,7 +874,11 @@ export const Products = ({
                               </label>
                             </div>
                             <div className="icon">
-                            <img src={ShareIconImg} alt="..."   className="cache"/>
+                              <img
+                                src={ShareIconImg}
+                                alt="..."
+                                className="cache"
+                              />
                               {/* <ShareIconImg className="cache" /> */}
                             </div>
                             <div
@@ -914,43 +921,43 @@ export const Products = ({
               })}
             </div>
           )}
-{/* {console.log(addedProds.length,'card.length')} */}
-       {/* {addedProds.length > 1 ?   */}
-        { card && (
-          addedProds.length > 0 ?  
-            <div className="col-12 card-modal">
-              <h1 className="title text-white">{t("my")}</h1>
-              {CardData.map(
-                (item) =>
-                  addedProds != 0 &&
-                  addedProds.map((post, index) => (
-                    <div
-                      className={`col-12 one-prod ${
-                        post != item.id && "d-none"
-                      }`}
-                      key={index}
-                    >
-                      <div className="col-2 img">
-                        <img src={item.image} alt="" />
-                      </div>
-                      <div className="col-4 name-div ">
-                        <h3 className="d-flex justify-content-between">
-                          {english && item.name_en} {russian && item.name_ru}{" "}
-                          {uzbek && item.name_uz}
-                        </h3>
-
-                        <div className="tools tools-price">
-                          <h4>
-                            цена:
-                            <span>{item.price}$</span>{" "}
-                          </h4>
+          {/* {console.log(addedProds.length,'card.length')} */}
+          {/* {addedProds.length > 1 ?   */}
+          {card &&
+            (addedProds.length > 0 ? (
+              <div className="col-12 card-modal">
+                <h1 className="title text-white">{t("my")}</h1>
+                {CardData.map(
+                  (item) =>
+                    addedProds != 0 &&
+                    addedProds.map((post, index) => (
+                      <div
+                        className={`col-12 one-prod ${
+                          post != item.id && "d-none"
+                        }`}
+                        key={index}
+                      >
+                        <div className="col-2 img">
+                          <img src={item.image} alt="" />
                         </div>
-                        {/* <h4>{console.log(countProd,'countProd')} d{countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count}</h4> */}
-                        {/* <h3 className="d-flex justify-content-between">{english && item.name_en} {russian && item.name_ru} {uzbek && item.name_uz} <p className="h6">$ {item.price}</p></h3> */}
+                        <div className="col-4 name-div ">
+                          <h3 className="d-flex justify-content-between">
+                            {english && item.name_en} {russian && item.name_ru}{" "}
+                            {uzbek && item.name_uz}
+                          </h3>
 
-                        {/* <h4>{t("total")}: ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count}</h4>    */}
-                      </div>
-                      {/* <div className="col-5 middle col-5 middle">
+                          <div className="tools tools-price">
+                            <h4>
+                              {t('68')}:
+                              <span>{item.price}$</span>{" "}
+                            </h4>
+                          </div>
+                          {/* <h4>{console.log(countProd,'countProd')} d{countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count}</h4> */}
+                          {/* <h3 className="d-flex justify-content-between">{english && item.name_en} {russian && item.name_ru} {uzbek && item.name_uz} <p className="h6">$ {item.price}</p></h3> */}
+
+                          {/* <h4>{t("total")}: ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count}</h4>    */}
+                        </div>
+                        {/* <div className="col-5 middle col-5 middle">
                         <div className=" d-flex">
                           <div
                             className="col-3 dec"
@@ -977,47 +984,47 @@ export const Products = ({
                         </div>
                       </div> */}
 
-                      <div className="col-2 middle piliusMInus">
-                        <div className="tools">
-                          <div className="d-flex col-4">
-                            <div
-                              className=" dec"
-                              onClick={() => decProd(item.id)}
-                            >
-                              <p>-</p>{" "}
+                        <div className="col-2 middle piliusMInus">
+                          <div className="tools">
+                            <div className="d-flex col-4">
+                              <div
+                                className=" dec"
+                                onClick={() => decProd(item.id)}
+                              >
+                                <p>-</p>{" "}
+                              </div>
+                              <div className="col-6 result">
+                                {countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num) : item.count}
+                                2
+                              </div>
+                              <div
+                                className=" inc"
+                                onClick={() => incProd(item.id)}
+                              >
+                                <p>+</p>
+                              </div>
                             </div>
-                            <div className="col-6 result">
+                            <h4>
+                              {t('101')}:
+                              {/* ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count} */}
+                            </h4>
+                          </div>
+                        </div>
+                        <div className="col-2 middle priceI">
+                          <div className="tools">
+                            <div className="d-flex col-4">
                               {/* {countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num) : item.count} */}
-                              2
+                              40
+                              <span>$</span>
                             </div>
-                            <div
-                              className=" inc"
-                              onClick={() => incProd(item.id)}
-                            >
-                              <p>+</p>
-                            </div>
+                            <h4>
+                            {t('68')}:
+                              {/* ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count} */}
+                            </h4>
                           </div>
-                          <h4>
-                            Количество:
-                            {/* ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count} */}
-                          </h4>
                         </div>
-                      </div>
-                      <div className="col-2 middle priceI">
-                        <div className="tools">
-                          <div className="d-flex col-4">
-                            {/* {countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num) : item.count} */}
-                            40
-                            <span>$</span>
-                          </div>
-                          <h4>
-                            Цена:
-                            {/* ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count} */}
-                          </h4>
-                        </div>
-                      </div>
-                      <div className="col-2 like-delet">
-                        {/* {likes.toString().includes(item.id) && (
+                        <div className="col-2 like-delet">
+                          {/* {likes.toString().includes(item.id) && (
                           <input
                             type="checkbox"
                             checked
@@ -1034,7 +1041,7 @@ export const Products = ({
                             id={item.id + 1}
                           />
                         )} */}
-                        {/* <label htmlFor={item.id + 1}>
+                          {/* <label htmlFor={item.id + 1}>
                           <i
                             onClick={() => addCountLike(item.id)}
                             className={`fa fa-heart-o`}
@@ -1044,182 +1051,187 @@ export const Products = ({
                             className={`fa fa-heart`}
                           ></i>
                         </label> */}
-                        {addProducts.toString().includes(item.id) && (
-                          <input
-                            type="checkbox"
-                            className="addedProduct"
-                            id={1 - item.id}
-                            onChange={() => deleteCard(item.id)}
-                            checked
-                          />
-                        )}
-                        {!addProducts.toString().includes(item.id) && (
-                          <input
-                            type="checkbox"
-                            id={`${1 - item.id}`}
-                            onChange={() => getAdd(item.id)}
-                            className={`addedProduct`}
-                          />
-                        )}
-                        <label
-                          htmlFor=""
-                          className="add-btn 
+                          {addProducts.toString().includes(item.id) && (
+                            <input
+                              type="checkbox"
+                              className="addedProduct"
+                              id={1 - item.id}
+                              onChange={() => deleteCard(item.id)}
+                              checked
+                            />
+                          )}
+                          {!addProducts.toString().includes(item.id) && (
+                            <input
+                              type="checkbox"
+                              id={`${1 - item.id}`}
+                              onChange={() => getAdd(item.id)}
+                              className={`addedProduct`}
+                            />
+                          )}
+                          <label
+                            htmlFor=""
+                            className="add-btn 
                          d_flex"
-                        >
-                          <div
-                            className="icon"
-                            onClick={() => filterData(value.id)}
                           >
-                            {" "}
-                            <Visibility className="eye" />{" "}
-                          </div>
-                        </label>
-                        <label
-                          onClick={() => addCountAdd()}
-                          htmlFor={`${1 - item.id}`}
-                          className="add-btn ghl"
-                        >
-                          Hoziroq xarid qilish
-                        </label>
-                        <label
-                          onClick={() => deletCountAdd()}
-                          htmlFor={`${1 - item.id}`}
-                          className="add-btn dfl"
-                        >
-                          <i className="fa fa-trash-o"></i>
-                        </label>
+                            <div
+                              className="icon"
+                              onClick={() => filterData(value.id)}
+                            >
+                              {" "}
+                              <Visibility className="eye" />{" "}
+                            </div>
+                          </label>
+                          <label
+                            onClick={() => addCountAdd()}
+                            htmlFor={`${1 - item.id}`}
+                            className="add-btn ghl"
+                          >
+                            Hoziroq xarid qilish
+                          </label>
+                          <label
+                            onClick={() => deletCountAdd()}
+                            htmlFor={`${1 - item.id}`}
+                            className="add-btn dfl"
+                          >
+                            <i className="fa fa-trash-o"></i>
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                  ))
-              )}
-              <h3 className="mt-5 text-white">
-                {t("total")}: $ {nbm}
-              </h3>
+                    ))
+                )}
+                <h3 className="mt-5 text-white">
+                  {t("total")}: $ {nbm}
+                </h3>
 
-              <div className="info-calc">
-                <hr />
-                <div className="info-text">
-                  <div className="left">
-                    <i className="fa fa-gift" aria-hidden="true"></i>
-                    <h1>
-                      закажите прямо сейчас и получите бесплатную доставку в
-                      подарок
-                    </h1>
-                  </div>
-                  <div className="right">
-                    <span>Общая сумма:</span> <h1>220$</h1>
+                <div className="info-calc">
+                  <hr />
+                  <div className="info-text">
+                    <div className="left">
+                      <i className="fa fa-gift" aria-hidden="true"></i>
+                      <h1>
+                      {t("100")}
+                        {/* закажите прямо сейчас и получите бесплатную доставку в
+                        подарок */}
+                      </h1>
+                    </div>
+                    <div className="right">
+                      <span>  {t("59")}:</span> <h1>220$</h1>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col-md-12 buy-all">
-                <Link to="/">
-                  <button className="clous btn-buy">
-                    <i className="fa fa-long-arrow-left"></i> Назад
-                  </button>
-                </Link>
+                <div className="col-md-12 buy-all">
+                  <Link to="/">
+                    <button className="clous btn-buy">
+                      <i className="fa fa-long-arrow-left"></i> 
+                      {/* Назад */}
+                       {t('69')}
+                    </button>
+                  </Link>
 
-                {/* <button className="btn" onClick={() => openModal(true)}>
+                  {/* <button className="btn" onClick={() => openModal(true)}>
                   {t("buyall")}
                 </button> */}
-                   <Link to="/payment">
-                   <button
-                  className=" btn-buy btn-big"
-                
-                >
-                  <i className="fa fa-gift" aria-hidden="true"></i> Покупать все
-                </button>
-                </Link>
-                {/* <button
+                  <Link to="/payment">
+                    <button className=" btn-buy btn-big">
+                      {/* <i className="fa fa-gift" aria-hidden="true"></i> */}
+                      <img className="fa fa-gift bass" src={bass} alt="" />
+                      {/* Покупать все */}
+                      {t('71')}
+                    </button>
+                  </Link>
+                  {/* <button
                   className=" btn-buy btn-big"
                   onClick={() => openModal(true)}
                 >
                   <i className="fa fa-gift" aria-hidden="true"></i> Покупать все
                 </button> */}
+                </div>
+                <div className={`col-12 row checkout ${!buyModal && "d-none"}`}>
+                  <i
+                    className="fa fa-times"
+                    onClick={() => openModal(false)}
+                  ></i>
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="">
+                      {t("name")}
+                    </label>
+                    <input
+                      className={`${redName && "red-line"} form-control`}
+                      value={nameValue}
+                      onChange={(e) => handleChange1(e.target.value)}
+                      type="text"
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="">
+                      {t("location")}
+                    </label>
+                    <input
+                      className={`${redText && "red-line"} form-control`}
+                      value={value}
+                      onChange={(e) => handleChange3(e.target.value)}
+                      type="text"
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="">
+                      {t("date")}
+                    </label>
+                    <input
+                      className={`${redDate && "red-line"} form-control`}
+                      value={date}
+                      onChange={(e) => handleChange4(e.target.value)}
+                      type="date"
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="">
+                      {t("phone")}
+                    </label>
+                    <input
+                      className={`${redNumber && "red-line"} form-control`}
+                      value={numberValue}
+                      onChange={(e) => handleChange2(e.target.value)}
+                      type="number"
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="">
+                      {t("email")}
+                    </label>
+                    <input
+                      className={`${redEmail && "red-line"} form-control`}
+                      value={email}
+                      onChange={(e) => handleChange5(e.target.value)}
+                      type="email"
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label" htmlFor="">
+                      {t("user")}
+                    </label>
+                    <input
+                      className={`${redPosition && "red-line"} form-control`}
+                      value={userPosition}
+                      onChange={(e) => handleChange6(e.target.value)}
+                      type="text"
+                    />
+                  </div>
+                  <div className="col-md-12">
+                    <button className="btn" onClick={() => sendMessage()}>
+                      {t("check")}
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className={`contr-card ${!buyModal && "d-none"}`}
+                  onClick={() => openModal(false)}
+                ></div>
               </div>
-              <div className={`col-12 row checkout ${!buyModal && "d-none"}`}>
-                <i className="fa fa-times" onClick={() => openModal(false)}></i>
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="">
-                    {t("name")}
-                  </label>
-                  <input
-                    className={`${redName && "red-line"} form-control`}
-                    value={nameValue}
-                    onChange={(e) => handleChange1(e.target.value)}
-                    type="text"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="">
-                    {t("location")}
-                  </label>
-                  <input
-                    className={`${redText && "red-line"} form-control`}
-                    value={value}
-                    onChange={(e) => handleChange3(e.target.value)}
-                    type="text"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="">
-                    {t("date")}
-                  </label>
-                  <input
-                    className={`${redDate && "red-line"} form-control`}
-                    value={date}
-                    onChange={(e) => handleChange4(e.target.value)}
-                    type="date"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="">
-                    {t("phone")}
-                  </label>
-                  <input
-                    className={`${redNumber && "red-line"} form-control`}
-                    value={numberValue}
-                    onChange={(e) => handleChange2(e.target.value)}
-                    type="number"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="">
-                    {t("email")}
-                  </label>
-                  <input
-                    className={`${redEmail && "red-line"} form-control`}
-                    value={email}
-                    onChange={(e) => handleChange5(e.target.value)}
-                    type="email"
-                  />
-                </div>
-                <div className="col-md-6">
-                  <label className="form-label" htmlFor="">
-                    {t("user")}
-                  </label>
-                  <input
-                    className={`${redPosition && "red-line"} form-control`}
-                    value={userPosition}
-                    onChange={(e) => handleChange6(e.target.value)}
-                    type="text"
-                  />
-                </div>
-                <div className="col-md-12">
-                  <button className="btn" onClick={() => sendMessage()}>
-                    {t("check")}
-                  </button>
-                </div>
-              </div>
-              <div
-                className={`contr-card ${!buyModal && "d-none"}`}
-                onClick={() => openModal(false)}
-              ></div>
-            </div>
-
-
-            :<NoteCatd text={info.text} img={info.img} info={info.info}/>
-          ) }
+            ) : (
+              <NoteCatd text={info.text} img={info.img} info={info.info} />
+            ))}
 
           {oneProd && (
             <div className="one-product col-md-12">
@@ -1384,17 +1396,18 @@ export const Products = ({
                           />
                         </div>
                         <div className="col-md-12">
-                          <button className="add-btn ghl" onClick={() => sendMessage()}>
-                         
-                     
-                          SUBMIT INFORMA
+                          <button
+                            className="add-btn ghl"
+                            onClick={() => sendMessage()}
+                          >
+                            SUBMIT INFORMA
                           </button>
                         </div>
                       </div>
                       <div
-                className={`contr-card ${!buyModal && "d-none"}`}
-                onClick={() => openModal(false)}
-              ></div>
+                        className={`contr-card ${!buyModal && "d-none"}`}
+                        onClick={() => openModal(false)}
+                      ></div>
                       {/* <label
                         onClick={() => deletCountAdd()}
                         htmlFor={`${1 - id}`}
@@ -1449,16 +1462,13 @@ export const Products = ({
                 ) : (
                   ""
                 )} */}
-  <label className="post-love">
-                                <i
-                                
-                                  className={`fa fa-heart-o`}
-                                ></i>
-                                <i
-                                  
-                                  className={`fa fa-heart`}
-                                ></i>
-                              </label>
+                <label className="post-love">
+                  <i className={`fa fa-heart-o`}></i>
+                  <i className={`fa fa-heart`}></i>
+                </label>
+                <label className="post-love post-tocommit">
+                 <img src={commit} alt="" />
+                </label>
                 <div className="discription"></div>
                 <h3 className="description mt-5">Description</h3>
                 <p>
@@ -1492,7 +1502,9 @@ export const Products = ({
                   активностью,панели не бояться прямого попадания брызг.
                 </p>
               </div>
-              <h3 className="recommend text-white mobileNone">{t("recommend")}:</h3>
+              <h3 className="recommend text-white mobileNone">
+                {t("recommend")}:
+              </h3>
               <div className="col-12 slide-tools mobileNone">
                 <div className="d-flex c2">
                   <i
@@ -1595,7 +1607,11 @@ export const Products = ({
                                 </div>
                                 <div className="icon">
                                   {/* <ShareIconImg className="cache" /> */}
-                                  <img src={ShareIconImg} alt="..."   className="cache"/>
+                                  <img
+                                    src={ShareIconImg}
+                                    alt="..."
+                                    className="cache"
+                                  />
                                 </div>
                                 <div
                                   className="icon"
@@ -1652,23 +1668,18 @@ export const Products = ({
                 {/* <Corousel /> */}
                 <SmallCor />
 
-
-
-
-
                 {/* modal  */}
               </div>
               <div className="col-md-5 text text-modal">
+                <h1>Stul kakoyto</h1>
+                <p>Stul kakoyto</p>
+                <p>Minimal iconic chair</p>
 
-<h1>Stul kakoyto</h1>
-<p>Stul kakoyto</p>
-<p>Minimal iconic chair</p>
-
-<div className="card-info">
-  <p>Hi-Tech usulida ishlangan</p>
-  <p>boyi 1m 20sm</p>
-  <p>eni 70sm</p>
-</div>
+                <div className="card-info">
+                  <p>Hi-Tech usulida ishlangan</p>
+                  <p>boyi 1m 20sm</p>
+                  <p>eni 70sm</p>
+                </div>
                 {/* <h3 className="name">
                   {english && data.name_en} {russian && data.name_ru}{" "}
                   {uzbek && data.name_uz}

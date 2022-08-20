@@ -5,7 +5,7 @@ import galeriya2 from './image/galeriya2.png'
 import galeriya3 from './image/galeriya3.png'
 import rightIcon from './image/rightIcon.svg'
 import { Link } from 'react-router-dom'
-
+import { t } from "i18next";
 function FotoGaliriya() {
   return (
     <div className="foto__galiriya__box">
@@ -39,7 +39,7 @@ function FotoGaliriya() {
           the Near and Far Abroad by all means of transport.
         </p>
       </div>
-      <h2 className="foto__galireya__title">PHOTOGALLERRY</h2>
+      <h2 className="foto__galireya__title">{t('84')}</h2>
       <div className="foto__galireya__image">
         <div className="foto__galireya__left">
           <img src={galeriya1} alt="galeriya" className="galeriya1" />

@@ -16,7 +16,7 @@ const Footer = () =>
       <div className="Footer">
         <div className="wrapper">
           <div className="f1 row">
-            <div className="col-3 col-sm-2 c1">
+            <div className="col-3 col-sm-2 c1 longText">
               {/* <img src={Img} className="w-5" alt="..." /> */}
               <p>
                 Funking is the a popular Ecommerce site. Lorem ipsum dolor sit
@@ -39,13 +39,17 @@ const Footer = () =>
             </div>
             <div className="col-3 col-sm-2 c2">
               <ul>
-                <li className="title">Products</li>
-                <li className="nav-link">Features</li>
-                <li className="nav-link">Enterprise</li>
-                <li className="nav-link">Security</li>
-                <li className="nav-link">Customer Store</li>
-                <li className="nav-link">Pricing</li>
-                <li className="nav-link">Demo</li>
+              
+
+
+
+
+
+                <li className="title">Help</li>
+                <li className="nav-link">Privacy Policy</li>
+                <li className="nav-link">Shipping & Delivery</li>
+                <li className="nav-link">Refund Policy</li>
+                <li className="nav-link">Track Your  Order</li>
               </ul>
             </div>
             <div className="col-3 col-sm-2 c2">
@@ -64,13 +68,16 @@ const Footer = () =>
             </div>
             <div className="col-3  col-sm-2 c2">
               <ul>
-                <li className="title">Company</li>
-                <li className="nav-link">Features</li>
-                <li className="nav-link">Enterprise</li>
-                <li className="nav-link">Security</li>
-                <li className="nav-link">Customer Store</li>
-                <li className="nav-link">Pricing</li>
-                <li className="nav-link">Demo</li>
+              
+
+
+
+
+                <li className="title">Supports</li>
+                <li className="nav-link">Feedbcak</li>
+                <li className="nav-link">Contact us</li>
+                <li className="nav-link">Download app</li>
+                <li className="nav-link">Terms conditins</li>
               </ul>
             </div>
           </div>

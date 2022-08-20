@@ -8,6 +8,7 @@ import "./Scss/Navbar.scss";
 import { Link, useLocation } from "react-router-dom";
 // import Img1 from './images/logo.png'
 // import { useTranslation } from 'react-i18next';
+import {t} from 'i18next'
 import {
   Close,
   KeyboardArrowDown,
@@ -144,7 +145,10 @@ const Navbar = ({
       <div className={`Navbar`}>
         <nav className="navbar navbar-expand justify-content-between align-items-center">
           <div className="navbar-info">
-            <h1>Welcome to our online shop</h1>
+            <h1>
+              {/* Welcome to our online shop */}
+              {t('102')}
+            </h1>
             <li className="nav-item" onClick={() => clickedSearch(false)}>
               <div className="d-flex align-items-center justify-content-between">
                 <div className="language d-flex align-items-center justify-content-between">
@@ -160,9 +164,9 @@ const Navbar = ({
                     />
                     <label htmlFor="language">
                       {
-                        langTitle === "EN"
+                        langTitle === "RU"
                           ? `English (USD)`
-                          : langTitle === "RU"
+                          : langTitle === "EN"
                           ? `Russian(${langTitle})`
                           : "Uzbek (UZ)"
                         //  || langTitle === "RU"
@@ -393,9 +397,11 @@ salom
                   {/* <i
                 className={`fa fa-bars d-block mx-2 ${catBar && "d-none"}`}
               ></i>{" "} */}
-                  <img  className={catBar && "d-none"} src={menu} alt="" />
+                  <img  
+                  // className={catBar && "d-none"} 
+                  src={menu} alt="" />
 
-                  <Close className={`times d-block z-close mx-2 ${!catBar && "d-none"}`} />{" "}
+                  {/* <Close className={`times d-block z-close mx-2 catBarNone ${catBar=== false ? "d-none":''}`} />{" "} */}
                   <span>ALL COLLECTIONS</span>
                   <div
                     className={`category-tools ${

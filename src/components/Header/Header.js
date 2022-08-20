@@ -93,7 +93,7 @@ const Header = () => {
                     </div>
 
                     <div className="col-6 link">
-                      <Link to={`/products${data.id}`} className="nav-link shop">
+                      <Link to={`/product/${data.id}`} className="nav-link shop">
                         SHOP NOW
                       </Link>
                     </div>
