@@ -5,7 +5,9 @@ import "./Scss/Prod.scss";
 import axios from "axios";
 import Shop from "./images/bag.png";
 import { t } from "i18next";
-import { Electronics, CardData } from "../../utils/electronics";
+import { Electronics, 
+  // CardData
+ } from "../../utils/electronics";
 import {
   Cached,
   Check,
@@ -47,14 +49,29 @@ export const Products = ({
   image,
   image1,
   image2,
+  image3,
   desc,
-  code,
+  code,description_uz ,description_ru,description_en,
   price,
   category,
 }) => {
-  console.log('price',price)
-  //Electronics, ProdName, CardData,//
-
+  // console.log('image3',image3)
+  // Electronics, ProdName, CardData,//
+  const [CardData, setProductInfo] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://api-mixinfo.abba.uz/products/")
+      .then(({data}) => {
+        console.log(data, "ProductInfoCardData");
+        setProductInfo(data);
+      })
+      .catch((err) => {
+        
+        console.log(err, "err");
+      });
+  }, []);
+  
+  // console.log(CardData[2], "CardData");
   // categories
   const info = {
     text: "У вас нет заказов",
@@ -163,16 +180,16 @@ export const Products = ({
   let addedProduct = document.querySelectorAll(".addedProduct");
 
   function getAdd(item) {
-    const url = `https://api.madeinuzb.com/addlike/${item}`;
-    setLike(!like);
-    axios.get(url);
-    setAddProducts([...addProducts, item]);
-    localStorage.setItem("added", [addProducts, item]);
-    setshowSuc(true);
-    setTimeout(() => {
-      setshowSuc(false);
-    }, 1500);
-    addCountAdd();
+    // const url = `https://api.madeinuzb.com/addlike/${item}`;
+    // setLike(!like);
+    // axios.get(url);
+    // setAddProducts([...addProducts, item]);
+    // localStorage.setItem("added", [addProducts, item]);
+    // setshowSuc(true);
+    // setTimeout(() => {
+    //   setshowSuc(false);
+    // }, 1500);
+    // addCountAdd();
   }
 
   function deleteCard(item) {
@@ -198,7 +215,7 @@ export const Products = ({
     );
   });
 // const [addProdColk, setAddProdColk] = useState(0);
-console.log(countProd,'countProd')
+// console.log(countProd,'countProd')
   function incProd(item) {
     setCountProd(
       countProd.map((c) => ({
@@ -271,7 +288,7 @@ console.log(countProd,'countProd')
 
   function openModal(item) {
     setBuymodal(item);
-    console.log(item);
+    // console.log(item);
   }
 
   const [nameValue, setNameValue] = useState("");
@@ -438,6 +455,14 @@ console.log(countProd,'countProd')
     // modalning ichidagi rasmlarni o'zgartirish funksiyasi
     setIndexImg(c.indexOf(e));
   }
+
+
+
+
+
+
+  
+
 
   return (
     <>
@@ -632,7 +657,7 @@ console.log(countProd,'countProd')
                       <div className="header">
                         <div className="nav-link navigator">
                           <img
-                            src={value.image}
+                            src={value.image1}
                             alt="errCard"
                             className="img"
                           />
@@ -721,7 +746,7 @@ console.log(countProd,'countProd')
                           {russian && value.name_ru}
                           {uzbek && value.name_uz}
                         </h2>
-                        <div className="card-bottom">
+                        <div className="card-bottom 9999">
                           {value.aksiya ? (
                             <h3>
                               $ {value.aksiya}{" "}
@@ -758,7 +783,8 @@ console.log(countProd,'countProd')
 
           {top && (
             <h1 id="hotsale" className="hot">
-              HOT SALES
+              {/* HOT SALES */}
+              {t('126')}
             </h1>
           )}
 
@@ -795,19 +821,24 @@ console.log(countProd,'countProd')
           {top && (
             <div className="products row mt-3">
               {CardData.map((value) => {
+                // console.log(CardData,'opp',value)
                 return (
                   <Card
                     key={value.id}
-                    className={`col-3 prod ${
-                      value.category == subTips && !allResult && "d-block"
-                    }`}
+                    className={`col-3 prod d-block
+                   
+                    `}
+                    // ${
+                    //   value.category == subTips && !allResult && "d-block"
+                    // }
                     style={{ transform: `translateX(${carousel * 50}%)` }}
                   >
                     <div className="body">
                       <div className="header">
                         <div className="nav-link navigator">
                           <img
-                            src={value.image}
+                            src={value.image1}
+                            
                             alt="errCard"
                             className="img"
                           />
@@ -896,10 +927,10 @@ console.log(countProd,'countProd')
                           {uzbek && value.name_uz}
                           {english && value.name_en}
                         </h2>
-                        <div className="card-bottom">
-                          {value.aksiya ? (
+                        <div className="card-bottom 999">
+                          {value.sale ? (
                             <h3>
-                              $ {value.aksiya}{" "}
+                              $ {value.price}{" "}
                               <s className="old-price">$ {value.price}</s>
                             </h3>
                           ) : (
@@ -909,7 +940,7 @@ console.log(countProd,'countProd')
                             <Rating
                               className="rating"
                               name="read-only"
-                              value={value.rate}
+                              value={value.likes-1}
                               readOnly
                             />
                           </Box>
@@ -938,7 +969,7 @@ console.log(countProd,'countProd')
                         key={index}
                       >
                         <div className="col-2 img">
-                          <img src={item.image} alt="" />
+                          <img src={item.image1} alt="" />
                         </div>
                         <div className="col-4 name-div ">
                           <h3 className="d-flex justify-content-between">
@@ -1013,13 +1044,13 @@ console.log(countProd,'countProd')
                         <div className="col-2 middle priceI">
                           <div className="tools">
                             <div className="d-flex col-4">
-                              {/* {countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num) : item.count} */}
+                              {countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num) : item.count}
                               40
                               <span>$</span>
                             </div>
                             <h4>
                             {t('68')}:
-                              {/* ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count} */}
+                              ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count}
                             </h4>
                           </div>
                         </div>
@@ -1237,6 +1268,7 @@ console.log(countProd,'countProd')
             <div className="one-product col-md-12">
               <div className="row col-md-12">
                 <div className="col-md-6 img">
+                  {console.log(image1,'image1')}
                   {/* <div className="body">
                     {otherImages
                       .slice(indexImg, indexImg + 1)
@@ -1245,7 +1277,8 @@ console.log(countProd,'countProd')
                       ))}
                   </div> */}
 
-                  <Corousel />
+                  <Corousel img1={image1} img2={image2}img3={image3} />
+                  {/* {console.log(image3,'image3')} */}
                 </div>
                 <div className="col-md-6 g0">
                   <div className="images">
@@ -1263,7 +1296,7 @@ console.log(countProd,'countProd')
                 <div className="col-md-6 text">
                   <div className="body">
                     <h1 className="name">{name}</h1>
-                    <h1 className="price">$ {price}.00</h1>
+                    <h1 className="price">$ {price}</h1>
                     <div className="deliver">
                       <div className="col-md-8">
                         <div className="bod">
@@ -1471,7 +1504,7 @@ console.log(countProd,'countProd')
                 </label>
                 <div className="discription"></div>
                 <h3 className="description mt-5">Description</h3>
-                <p>
+                {/* <p>
                   YEcophon Solo™ Rectangle Akutex HS акустическое решение,
                   применяемое в тех случаях когда затруднена установка потолка
                   "от стены до стены". Панель звукопоглощающая, без обрамления,
@@ -1500,7 +1533,11 @@ console.log(countProd,'countProd')
                   Ecophon Solo™ Rectangle Akutex HS подходит для применения в
                   бассейнах, помещениях с высокой влажностью и коррозионной
                   активностью,панели не бояться прямого попадания брызг.
-                </p>
+                </p> */}
+
+                <p> {english && description_en}{" "}
+                  {russian && description_ru}{" "}
+                  {uzbek && description_uz}</p>
               </div>
               <h3 className="recommend text-white mobileNone">
                 {t("recommend")}:
@@ -1657,6 +1694,8 @@ console.log(countProd,'countProd')
               key={data.id}
               className={`prod-info col-md-12 row ${!isModal && "d-none"}`}
             >
+            {console.log('oneData',oneData)}
+
               <Close className="close-icon" onClick={() => backFilter()} />
               <div className="col-md-6 img  modal-fix">
                 {/* {otherImages1
@@ -1666,13 +1705,25 @@ console.log(countProd,'countProd')
                   ))} */}
 
                 {/* <Corousel /> */}
-                <SmallCor />
+                <SmallCor img1={data.image1}img2={data.image2}img3={data.image3} />
 
                 {/* modal  */}
               </div>
               <div className="col-md-5 text text-modal">
-                <h1>Stul kakoyto</h1>
-                <p>Stul kakoyto</p>
+                <h1>
+                  {/* Stul kakoyto */}
+
+                {english && data.name_en}{" "}
+                  {russian && data.name_ru}{" "}
+                  {uzbek && data.name_uz}
+
+                </h1>
+                <p>
+                  {/* Stul kakoyto */}
+                  {english && data.description_en}{" "}
+                  {russian && data.description_ru}{" "}
+                  {uzbek && data.description_uz}
+                  </p>
                 <p>Minimal iconic chair</p>
 
                 <div className="card-info">

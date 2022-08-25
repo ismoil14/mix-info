@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
-import { Electronics, ProdName, CardData } from "./utils/electronics";
+import { Electronics, ProdName,
+  //  CardData
+   } from "./utils/electronics";
 
 // components
 import ToTop from "./components/ToTop";
@@ -32,7 +34,21 @@ import Blog from "./components/Blog/Blog";
 
 const App = () => {
   //Categories  API
+  const [CardData, setProductInfo] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://api-mixinfo.abba.uz/products/")
+      .then(({data}) => {
+        // console.log(data, "ProductInfoCardData");
+        setProductInfo(data);
+      })
+      .catch((err) => {
+        
+        console.log(err, "err");
+      });
+  }, []);
 
+  
   const [dataCategories, setDataCategories] = useState([]);
   const urlCategories = `http://93.189.40.27:3700/categories/`;
 
@@ -62,7 +78,7 @@ const App = () => {
   //Products  API
 
   const [dataProducts, setDataProducts] = useState([]);
-  const urlProducts = `http://93.189.40.27:3700/products/`;
+  const urlProducts = `https://api-mixinfo.abba.uz/products/`;
 
   useEffect(() => {
     async function fetchData() {
@@ -89,120 +105,135 @@ const App = () => {
 
   // blogs API
 
-  const dataBlogs = [
-    {
-      id: 1,
-      image: Img1,
-      date: "10.09.2022",
-      name_uz: "The 9 best homes in New York",
-      name_en: "The 9 best homes in New York",
-      name_ru: "The 9 best homes in New York",
-      description_uz:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_en:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_ru:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-    },
-    {
-      id: 2,
-      image: Img2,
-      date: "10.09.2022",
-      name_uz: "The 9 best homes in New York",
-      name_en: "The 9 best homes in New York",
-      name_ru: "The 9 best homes in New York",
-      description_uz:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_en:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_ru:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-    },
-    {
-      id: 3,
-      image: Img3,
-      date: "10.09.2022",
-      name_uz: "The 9 best homes in New York",
-      name_en: "The 9 best homes in New York",
-      name_ru: "The 9 best homes in New York",
-      description_uz:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_en:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_ru:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-    },
-    {
-      id: 4,
-      image: Img2,
-      date: "10.09.2022",
-      name_uz: "The 9 best homes in New York",
-      name_en: "The 9 best homes in New York",
-      name_ru: "The 9 best homes in New York",
-      description_uz:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_en:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_ru:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-    },
-    {
-      id: 5,
-      image: Img3,
-      date: "10.09.2022",
-      name_uz: "The 9 best homes in New York",
-      name_en: "The 9 best homes in New York",
-      name_ru: "The 9 best homes in New York",
-      description_uz:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_en:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_ru:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-    },
-    {
-      id: 6,
-      image: Img1,
-      date: "10.09.2022",
-      name_uz: "The 9 best homes in New York",
-      name_en: "The 9 best homes in New York",
-      name_ru: "The 9 best homes in New York",
-      description_uz:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_en:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_ru:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-    },
-    {
-      id: 7,
-      image: Img1,
-      date: "10.09.2022",
-      name_uz: "The 9 best homes in New York",
-      name_en: "The 9 best homes in New York",
-      name_ru: "The 9 best homes in New York",
-      description_uz:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_en:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_ru:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-    },
-    {
-      id: 8,
-      image: Img1,
-      date: "10.09.2022",
-      name_uz: "The 9 best homes in New York",
-      name_en: "The 9 best homes in New York",
-      name_ru: "The 9 best homes in New York",
-      description_uz:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_en:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-      description_ru:
-        "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
-    },
-  ];
+  const [dataBlogs, setDataBlogs] = useState([]);
+  useEffect(() => {
+    
+    axios
+      .get("https://api-mixinfo.abba.uz/blogs/")
+      .then(({data}) => {
+        // console.log(data, "BlogInfo");
+        setDataBlogs(data);
+      })
+      .catch((err) => {
+        
+        console.log(err, "err");
+      });
+  }, []);
+
+  // const dataBlogs = [
+  //   {
+  //     id: 1,
+  //     image: Img1,
+  //     date: "10.09.2022",
+  //     name_uz: "The 9 best homes in New York",
+  //     name_en: "The 9 best homes in New York",
+  //     name_ru: "The 9 best homes in New York",
+  //     description_uz:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_en:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_ru:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //   },
+  //   {
+  //     id: 2,
+  //     image: Img2,
+  //     date: "10.09.2022",
+  //     name_uz: "The 9 best homes in New York",
+  //     name_en: "The 9 best homes in New York",
+  //     name_ru: "The 9 best homes in New York",
+  //     description_uz:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_en:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_ru:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //   },
+  //   {
+  //     id: 3,
+  //     image: Img3,
+  //     date: "10.09.2022",
+  //     name_uz: "The 9 best homes in New York",
+  //     name_en: "The 9 best homes in New York",
+  //     name_ru: "The 9 best homes in New York",
+  //     description_uz:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_en:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_ru:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //   },
+  //   {
+  //     id: 4,
+  //     image: Img2,
+  //     date: "10.09.2022",
+  //     name_uz: "The 9 best homes in New York",
+  //     name_en: "The 9 best homes in New York",
+  //     name_ru: "The 9 best homes in New York",
+  //     description_uz:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_en:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_ru:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //   },
+  //   {
+  //     id: 5,
+  //     image: Img3,
+  //     date: "10.09.2022",
+  //     name_uz: "The 9 best homes in New York",
+  //     name_en: "The 9 best homes in New York",
+  //     name_ru: "The 9 best homes in New York",
+  //     description_uz:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_en:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_ru:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //   },
+  //   {
+  //     id: 6,
+  //     image: Img1,
+  //     date: "10.09.2022",
+  //     name_uz: "The 9 best homes in New York",
+  //     name_en: "The 9 best homes in New York",
+  //     name_ru: "The 9 best homes in New York",
+  //     description_uz:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_en:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_ru:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //   },
+  //   {
+  //     id: 7,
+  //     image: Img1,
+  //     date: "10.09.2022",
+  //     name_uz: "The 9 best homes in New York",
+  //     name_en: "The 9 best homes in New York",
+  //     name_ru: "The 9 best homes in New York",
+  //     description_uz:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_en:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_ru:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //   },
+  //   {
+  //     id: 8,
+  //     image: Img1,
+  //     date: "10.09.2022",
+  //     name_uz: "The 9 best homes in New York",
+  //     name_en: "The 9 best homes in New York",
+  //     name_ru: "The 9 best homes in New York",
+  //     description_uz:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_en:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //     description_ru:
+  //       "Integer tincidunt rutrum faucibus. Proin sit amet varius arcu. Aliquam vel leo augue donec.",
+  //   },
+  // ];
 
   // i18nexus
 
@@ -410,7 +441,9 @@ const App = () => {
           />
         </Route>
         <Route exact path="/profile">
-          <Profile />
+          <Profile english={english}
+            russian={russian}
+            uzbek={uzbek}/>
         </Route>
         <Route exact path="/logout">
           <LogOut />
@@ -552,8 +585,10 @@ const App = () => {
           />
         </Route>
         {CardData.map((data) => {
+          {console.log(data.image3,';;;;')}
           return (
             <Route key={data.id} path={`/product/${data.id}`}>
+
               {english && (
                 <Products
                   allResult={allResult}
@@ -572,8 +607,9 @@ const App = () => {
                   image={data.image}
                   image1={data.image1}
                   image2={data.image2}
+                  image3={data.image3}
                   video={data.video}
-                  desc={data.description_en}
+                  description_en={data.description_en}
                   code={data.product_code}
                   price={data.price}
                   CardData={dataProducts}
@@ -605,7 +641,7 @@ const App = () => {
                   image1={data.image1}
                   image2={data.image2}
                   video={data.video}
-                  desc={data.description_ru}
+                  description_ru={data.description_ru}
                   code={data.product_code}
                   price={data.price}
                   CardData={dataProducts}
@@ -637,7 +673,7 @@ const App = () => {
                   image1={data.image1}
                   image2={data.image2}
                   video={data.video}
-                  desc={data.description_uz}
+                  description_uz={data.description_uz}
                   code={data.product_code}
                   price={data.price}
                   CardData={dataProducts}
@@ -663,8 +699,8 @@ const App = () => {
                 uzbek={uzbek}
                 id={data.id}
                 name={data.name_en}
-                image={data.image}
-                desc={data.description_en}
+                photo={data.photo}
+                desc={data.text_en}
                 main={false}
                 one={true}
               />
@@ -677,8 +713,8 @@ const App = () => {
                 uzbek={uzbek}
                 id={data.id}
                 name={data.name_ru}
-                image={data.image}
-                desc={data.description_ru}
+                photo={data.photo}
+                desc={data.text_ru}
                 main={false}
                 one={true}
               />
@@ -691,15 +727,15 @@ const App = () => {
                 uzbek={uzbek}
                 id={data.id}
                 name={data.name_uz}
-                image={data.image}
-                desc={data.description_uz}
+                photo={data.photo}
+                desc={data.text_uz}
                 main={false}
                 one={true}
               />
             )}
           </Route>
         ))}{" "}
-        {dataBlogs.map((data) => (
+        {dataBlogs.map((data,index) => (
           <Route key={data.id} path={`/blog`}>
             {english && (
               <BlogI
@@ -709,8 +745,8 @@ const App = () => {
                 uzbek={uzbek}
                 id={data.id}
                 name={data.name_en}
-                image={data.image}
-                desc={data.description_en}
+                photo={data.photo}
+                desc={data.text_en}
                 main={false}
                 one={true}
               />
@@ -723,13 +759,14 @@ const App = () => {
                 uzbek={uzbek}
                 id={data.id}
                 name={data.name_ru}
-                image={data.image}
-                desc={data.description_ru}
+                photo={data.photo}
+                desc={data.text_ru}
                 main={false}
                 one={true}
               />
             )}
             {uzbek && (
+              
            <BlogI
                 dataBlogs={dataBlogs}
                 english={english}
@@ -737,8 +774,9 @@ const App = () => {
                 uzbek={uzbek}
                 id={data.id}
                 name={data.name_uz}
-                image={data.image}
-                desc={data.description_uz}
+                photo={data.photo}
+
+                desc={data.text_uz}
                 main={false}
                 one={true}
               />

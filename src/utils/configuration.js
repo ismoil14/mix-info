@@ -1,0 +1,1 @@
+export const  BASE_URL = " https://api-mixinfo.abba.uz/auth/"

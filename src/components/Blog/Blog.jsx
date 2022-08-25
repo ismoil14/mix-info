@@ -5,8 +5,8 @@ import './Scss/Blog.scss';
 // import Img3 from './images/b3.png';
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
-
-const Blog = ({dataBlogs, english, russian, uzbek, main, one, name, desc, image}) => {
+import {t}from "i18next";
+const Blog = ({dataBlogs, english, russian, uzbek, main, one, name, desc, photo}) => {
 
     // data of blogs
 
@@ -44,11 +44,12 @@ const Blog = ({dataBlogs, english, russian, uzbek, main, one, name, desc, image}
                 {one &&
 <>   
                     <div className='one-blog'>
-                    <Link to='/blog'><button className='ToBack'> <i className="fa fa-long-arrow-left"   aria-hidden="true"></i> BACK</button></Link> 
+                    <Link to='/blog'><button className='ToBack'> <i className="fa fa-long-arrow-left"   aria-hidden="true"></i> {t('135')}</button></Link> 
                         <h1 className="title">{name}</h1>
                         <p className="desc1">{desc}</p>
                         <div className="col-md-12 one-img">
-                            <img src={image} alt="..." />
+                            <img src={photo} alt="..." />
+                            {/* {console.log(photo,'photo')} */}
                         </div>
                     </div></>
             
@@ -64,14 +65,14 @@ const Blog = ({dataBlogs, english, russian, uzbek, main, one, name, desc, image}
                         <div key={data.id} className="blog">
                             <div className="body">
                                 <div className="img">
-                                    <img src={data.image} alt='...' />
+                                    <img src={data.photo} alt='...' />
                                 </div>
                                 <div className="text">
-                                    <div className='date-cont'><div className="day">Trends</div> <p className="date">{data.date}</p></div>
+                                    <div className='date-cont'><div className="day">{data.author}</div> <p className="date">{data.date}</p></div>
                                    
                                     <h5 className="name">{uzbek && data.name_uz} {english && data.name_en} {russian && data.name_ru}</h5>
-                                    <p className="desc">{uzbek && data.description_uz} {english && data.description_en} {russian && data.description_ru}</p>
-                                    <Link to={`/blog/${data.id}`} className="nav-link read">Read More <i className="fa fa-angle-right"></i></Link>
+                                    <p className="desc">{uzbek && data.text_uz} {english && data.text_en} {russian && data.text_ru}</p>
+                                    <Link to={`/blog/${data.id}`} className="nav-link read">{t('136')}<i className="fa fa-angle-right"></i></Link>
                                 </div>
                             </div>
                             
@@ -83,7 +84,9 @@ const Blog = ({dataBlogs, english, russian, uzbek, main, one, name, desc, image}
 <div className="read-more">
     
     
-    <Link to="/blog"><button className="btn  btn-default">Explore All <i className="fa fa-long-arrow-right"></i></button></Link>
+    <Link to="/blog"><button className="btn  btn-default">
+        {/* Explore All */}
+    {t('128')} <i className="fa fa-long-arrow-right"></i></button></Link>
       
 </div>
               

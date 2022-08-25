@@ -6,7 +6,7 @@ import portners from "./images/click.png";
 import Payme from "./images/Payme.png";
 import MasterCard from "./images/MasterCard.png";
 import Visa from "./images/Visa.png";
-
+import { Link } from "react-router-dom";
 const Footer = () =>
   // { english, arabian, uzbek, russian }
   {
@@ -84,21 +84,30 @@ const Footer = () =>
           <div className="col-md-12 footer-bottom">
             <p>© 2021 Funking - All rights reserved.</p>
             <div className="partnersCont">
+            <Link to='/payment'>
+            <img src={portners} alt="" />
+
+            </Link>
+             
+            <Link to='/payment'>
+            <img src={Payme} alt="" />
+
+            </Link>
+
+             
+            <Link to='/payment'>
+            <img src={MasterCard} alt="" />
+
+            </Link>
+
+             
+            <Link to='/payment'>
+            <img src={Visa} alt="" />
+
+            </Link>
+
               <a href="http://www.facebookarchive">
                 {" "}
-                <img src={portners} alt="" />
-              </a>
-              <a href="http://www.facebookarchive">
-                {" "}
-                <img src={Payme} alt="" />
-              </a>
-              <a href="http://www.facebookarchive">
-                {" "}
-                <img src={MasterCard} alt="" />
-              </a>
-              <a href="http://www.facebookarchive">
-                {" "}
-                <img src={Visa} alt="" />
               </a>
             </div>
           

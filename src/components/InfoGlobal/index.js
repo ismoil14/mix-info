@@ -1,7 +1,8 @@
 import React from "react";
 import "./style/style.scss";
-import flags from "./img/flags.png";
+import flags from "./img/flag.png";
 import globus from "./img/Globus.png";
+import {t} from 'i18next'
 export default function InfoGlobal() {
   return (
     <div className="InfoGlobal-container">
@@ -9,7 +10,10 @@ export default function InfoGlobal() {
         <img src={flags} alt="" />
       </div>
       <div className="global-cont">
-        <h1>Biz export qiladigan davlatlar!</h1>
+        <h1>
+          {/* Biz export qiladigan davlatlar! */}
+          {t('129')}
+          </h1>
         <div className="global-img-container">
           <img src={globus} />
           <button className="btn btn-usa" >Tojikiston </button>

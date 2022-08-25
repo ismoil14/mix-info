@@ -9,8 +9,8 @@ import {
 } from "./style";
 import "./Scss/Prod.scss";
 import Shop from "./images/bag.png";
-import { t } from "i18next";
-import { Electronics, ProdName, CardData } from "../../utils/electronics";
+import { t} from "i18next";
+// import { Electronics, ProdName, CardData } from "../../utils/electronics";
 import {
   Cached,
   Check,
@@ -24,7 +24,6 @@ import { Box } from "@material-ui/core";
 import FAQ from '../FAQ/FAQ';
 import MonandItIs from '../MonandItIs/MonandItIs';
 import Blog from '../Blog/Blog';
-
 
 
 
@@ -45,6 +44,21 @@ export default function AllCard({
   image2,
 }) {
     
+
+
+  const [CardData, setProductInfo] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://api-mixinfo.abba.uz/products/")
+      .then(({data}) => {
+        console.log(data, "ProductInfoCardData");
+        setProductInfo(data);
+      })
+      .catch((err) => {
+        
+        console.log(err, "err");
+      });
+  }, []);
   const [allCat, setAllCat] = useState(false);
 
   let radio = document.querySelectorAll(".radio");
@@ -53,7 +67,7 @@ export default function AllCard({
     radio[0].setAttribute("checked", "true");
   }
   const {open}=useSelector(({sideBar})=>sideBar)
-  console.log("open",open)
+  // console.log("open",open)
 
   // tips of products
 
@@ -431,9 +445,9 @@ export default function AllCard({
                 <div className="body">
                   <div className="header">
                     <a className="nav-link navigator">
-                      <img src={value.image} alt="errCard" className="img" />
+                      <img src={value.image1} alt="errCard" className="img" />
                       <div className="top-left">
-                        {value.sale ? "New" : "Sale"}
+                        {value.sale ? t('133') : t('134')}
                       </div>
                       <Link
                         to={`product/${value.id}`}
@@ -504,7 +518,7 @@ export default function AllCard({
                           <Visibility className="eye" />
                         </div>
                       </div>
-                    </a>
+                    </a> 
                   </div>
                   <Card.Footer className="footer">
                     <h2>

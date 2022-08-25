@@ -1103,8 +1103,8 @@
   .Blog .wrapper .blog .body .text .date,
   .Blog .wrapper .blog .body .text .desc {
     font-size: 12px !important;
-    overflow: inherit !important;
-    height: auto !important;
+    // overflow: inherit !important;
+    // height: auto !important;
   }
   .Blog .wrapper .blog .body .text .read {
     font-size: 16px !important;
@@ -1508,7 +1508,11 @@
     width: auto !important;
   }
 }
+@media (min-width: 900px) {.Blog .wrapper .read-more .btn {
+  width: auto !important;
+}
 
+}
 @media (max-width: 500px) {
   .Header .wrapper .carousel-slide .slider .slider-page .body .title h2 {
     font-size: 32px !important;

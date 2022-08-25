@@ -1,12 +1,25 @@
-import React from 'react'
-import './fotoGaliriya.css'
-import galeriya1 from './image/galeriya1.png'
-import galeriya2 from './image/galeriya2.png'
-import galeriya3 from './image/galeriya3.png'
-import rightIcon from './image/rightIcon.svg'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "./fotoGaliriya.css";
+import galeriya1 from "./image/galeriya1.png";
+import galeriya2 from "./image/galeriya2.png";
+import galeriya3 from "./image/galeriya3.png";
+import rightIcon from "./image/rightIcon.svg";
 import { t } from "i18next";
 function FotoGaliriya() {
+  const [Golerry, setGolerry] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://api-mixinfo.abba.uz/gallery_photos/")
+      .then(({ data }) => {
+        console.log(data, "setGolerry");
+        setGolerry(data);
+      })
+      .catch((err) => {
+        console.log(err, "err");
+      });
+  }, []);
   return (
     <div className="foto__galiriya__box">
       <div className="foto__galiriya__text">
@@ -39,7 +52,7 @@ function FotoGaliriya() {
           the Near and Far Abroad by all means of transport.
         </p>
       </div>
-      <h2 className="foto__galireya__title">{t('84')}</h2>
+      <h2 className="foto__galireya__title">{t("84")}</h2>
       <div className="foto__galireya__image">
         <div className="foto__galireya__left">
           <img src={galeriya1} alt="galeriya" className="galeriya1" />
@@ -61,14 +74,16 @@ function FotoGaliriya() {
         </div>
       </div>
       <div className="galeriya__btn">
-        <Link to='/'> <div className="btn">
-          <p>Back to main page</p>
-          <img src={rightIcon} alt="rightIcon" />
-        </div></Link>
-       
+        <Link to="/">
+          {" "}
+          <div className="btn">
+            <p>Back to main page</p>
+            <img src={rightIcon} alt="rightIcon" />
+          </div>
+        </Link>
       </div>
     </div>
-  )
+  );
 }
 
-export default FotoGaliriya
+export default FotoGaliriya;

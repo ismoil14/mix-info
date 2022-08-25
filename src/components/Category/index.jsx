@@ -6,6 +6,7 @@ import Img2 from "./images/b3.png";
 import { Link } from "react-router-dom";
 import { ArrowForward } from "@material-ui/icons";
 import Slider from 'react-slick';
+import {t} from "i18next"
 const Category = ({ uzbek, russian, english, changeCategories }) => {
   const dataCategories = [
     {
@@ -121,7 +122,8 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
     <div className="Category">
       <div className="wrapper">
         <h1 className="title">
-          Our Production <i className={`fa fa-heart-o`}></i>
+          {/* Our Production */}
+           {t('103')} <i className={`fa fa-heart-o`}></i>
         </h1>
 
         <div className="col-md-12 row myDesctopProd">

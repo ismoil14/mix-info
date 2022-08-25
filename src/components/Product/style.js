@@ -145,6 +145,16 @@ Card.Footer = styled.div`
     font-size: 1.3020833333333333vw;
     color: white;
     margin-top: 1.3020833333333333vw;
+    font-family: 'Rubik';
+font-style: normal;
+font-weight: 400;
+/* font-size: 20px; */
+line-height: 120%;
+/* or 24px */
+
+letter-spacing: 0.005em;
+
+color: #555555;
   }
   h3 {
     font-style: normal;

@@ -30,9 +30,9 @@ export const ProdName = [
 export const CardData = [
   {
     id: 1,
-    name_en: "Papel 040  HI tech",
-    name_uz: "Papel 040  HI tech",
-    name_ru: "Papel 040  HI tech",
+    name_en: "Papel 040  HI tech ismoil",
+    name_uz: "Papel 040  HI tech ismoil",
+    name_ru: "Papel 040  HI tech ismoil",
     subname_en: "TV",
     price: 200,    
     sale: true,

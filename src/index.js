@@ -8,7 +8,7 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
 import "./I18next.js";
-import store from "./Redux/store";
+import {store} from "./Redux/store";
 
 ReactDOM.render(
 
