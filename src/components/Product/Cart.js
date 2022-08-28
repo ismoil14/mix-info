@@ -37,6 +37,7 @@ console.log(cart,'cart')
     setBuymodal(item);
     // console.log(item);
   }
+  
   return (
     <>
       {true &&

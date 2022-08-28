@@ -13,7 +13,7 @@ const Profile = ({ english, russian, uzbek }) => {
   // console.log('getUsersInfo',getUsersInfo('user'))
   const [ProfileInfo, setProfileInfo] = useState([]);
   useEffect(() => {
-    getUsersInfo("users")
+    getUsersInfo("users/")
       .then(({ data }) => {
         console.log(data, "ProfileInfo");
         setProfileInfo(data);

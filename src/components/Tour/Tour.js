@@ -12,7 +12,9 @@ const Tour = () => {
         <div className='Tour'>
             <div className={`contr-tour ${showTour && 'd-none'}`} onClick={() => setShowTour(true)} >
                 {/* <h1 >SHOWR  OOM</h1> */}
-                <h1 >{t('130')}</h1>
+                <h1 >
+                    {/* {t('130')} */}
+                SHOWR  OOM</h1>
                 <img src={Img1} alt='...' />
                 <h1>
                     {/* FACTORY */}

@@ -73,3 +73,40 @@
     height: 100%;
   }
 }
+
+
+
+@media(max-width:420px){
+  .Tour{
+    height: 260px;
+    .contr-tour{
+      align-items: center;
+    }
+  }
+  .MonandItIs .wrapper .clients{font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27.7288px;
+    line-height: 33px;}
+    .partners .slick-track{
+      display: flex;
+    gap: 20px;
+    }.Category .wrapper .row .one .body {
+      justify-content: space-evenly;
+  }.Header .wrapper .carousel-slide .leftLinkSlid .slick-slide{
+    width: 69.29px !important;
+height: 64.67px !important;
+  }.Blog .wrapper .blog .body .text .date-cont {
+    .date{
+      font-weight: 400;
+      font-size: 7.88597px !important;
+      line-height: 9px !important;
+  
+    }
+    .day{
+      font-weight: 400;
+      font-size: 7.88597px !important;
+      line-height: 9px !important;
+    }
+  }
+}
