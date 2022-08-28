@@ -22,7 +22,7 @@ const Tour = () => {
             <CloseOutlined className={`close ${!showTour && 'd-none'}`} onClick={() => setShowTour(false)} />
             {/* <Iframe className="virtual-iframe" url="https://momento360.com/e/u/a191f52d867440538c7490a5ed39724f?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium"
                 id="myId"
-                display="initial"
+                di7splay="initial"
                 position="relative"/> */}
              
                 <iframe 

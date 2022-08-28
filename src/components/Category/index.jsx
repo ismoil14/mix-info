@@ -1,8 +1,13 @@
 import React from "react";
 import "./Scss/Categories.scss";
-import Img1 from "./images/b1.png";
-import Img3 from "../../assets/imgs/slid.png";
-import Img2 from "./images/b3.png";
+// import Img1 from "./images/b1.png";
+// import Img3 from "./images/Cat1.png";
+// import Img2 from "./images/b3.png";
+import Img1 from "./images/Cat1.png";
+import Img3 from "./images/Cat3.png";
+import Img2 from "./images/Cat2.png";
+import Img4 from "./images/Cat4.png";
+import Img5 from "./images/Cat5.png";
 import { Link } from "react-router-dom";
 import { ArrowForward } from "@material-ui/icons";
 import Slider from 'react-slick';
@@ -11,7 +16,7 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
   const dataCategories = [
     {
       id: 1,
-      image: Img3,
+      image: Img4,
       name_uz: "Modern Furniture Collections",
       name_ru: "Modern Furniture Collections",
       name_en: "Modern Furniture Collections",
@@ -21,7 +26,7 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
     },
     {
       id: 2,
-      image: Img2,
+      image: Img5,
       name_uz: "Modern Furniture Collections",
       name_ru: "Modern Furniture Collections",
       name_en: "Modern Furniture Collections",
@@ -31,16 +36,6 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
     },
     {
       id: 3,
-      image: Img3,
-      name_uz: "Modern Furniture Collections",
-      name_ru: "Modern Furniture Collections",
-      name_en: "Modern Furniture Collections",
-      description_uz: "Starting from $500",
-      description_ru: "Starting from $500",
-      description_en: "Starting from $500",
-    },
-    {
-      id: 4,
       image: Img1,
       name_uz: "Modern Furniture Collections",
       name_ru: "Modern Furniture Collections",
@@ -50,17 +45,17 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
       description_en: "Starting from $500",
     },
     {
+      id: 4,
+      image: Img2,
+      name_uz: "Modern Furniture Collections",
+      name_ru: "Modern Furniture Collections",
+      name_en: "Modern Furniture Collections",
+      description_uz: "Starting from $500",
+      description_ru: "Starting from $500",
+      description_en: "Starting from $500",
+    },
+    {
       id: 5,
-      image: Img2,
-      name_uz: "Modern Furniture Collections",
-      name_ru: "Modern Furniture Collections",
-      name_en: "Modern Furniture Collections",
-      description_uz: "Starting from $500",
-      description_ru: "Starting from $500",
-      description_en: "Starting from $500",
-    },
-    {
-      id: 6,
       image: Img3,
       name_uz: "Modern Furniture Collections",
       name_ru: "Modern Furniture Collections",
@@ -69,28 +64,39 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
       description_ru: "Starting from $500",
       description_en: "Starting from $500",
     },
-    {
-      id: 7,
-      image: Img2,
-      name_uz: "Modern Furniture Collections1",
-      name_ru: "Modern Furniture Collections",
-      name_en: "Modern Furniture Collections",
-      description_uz: "Starting from $500",
-      description_ru: "Starting from $500",
-      description_en: "Starting from $500",
-    },
-    {
-      id: 8,
-      image: Img3,
-      name_uz: "Modern Furniture Collections2",
-      name_ru: "Modern Furniture Collections",
-      name_en: "Modern Furniture Collections",
-      description_uz: "Starting from $500",
-      description_ru: "Starting from $500",
-      description_en: "Starting from $500",
-    },
+    // {
+    //   id: 6,
+    //   image: Img6,
+    //   name_uz: "Modern Furniture Collections",
+    //   name_ru: "Modern Furniture Collections",
+    //   name_en: "Modern Furniture Collections",
+    //   description_uz: "Starting from $500",
+    //   description_ru: "Starting from $500",
+    //   description_en: "Starting from $500",
+    // },
+    // {
+    //   id: 7,
+    //   image: Img2,
+    //   name_uz: "Modern Furniture Collections1",
+    //   name_ru: "Modern Furniture Collections",
+    //   name_en: "Modern Furniture Collections",
+    //   description_uz: "Starting from $500",
+    //   description_ru: "Starting from $500",
+    //   description_en: "Starting from $500",
+    // },
+    // {
+    //   id: 8,
+    //   image: Img3,
+    //   name_uz: "Modern Furniture Collections2",
+    //   name_ru: "Modern Furniture Collections",
+    //   name_en: "Modern Furniture Collections",
+    //   description_uz: "Starting from $500",
+    //   description_ru: "Starting from $500",
+    //   description_en: "Starting from $500",
+    // },
   ];
 
+  
   const settings = {
     // centerMode: true,
     centerPadding: '160px',
@@ -123,7 +129,8 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
       <div className="wrapper">
         <h1 className="title">
           {/* Our Production */}
-           {t('103')} <i className={`fa fa-heart-o`}></i>
+           {t('103')}
+            {/* <i className={`fa fa-heart-o`}></i> */}
         </h1>
 
         <div className="col-md-12 row myDesctopProd">
@@ -175,7 +182,7 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
               </div>
             ))}
           </div>
-          <div className="col-md-6 two">
+          <div className="col-md-6 two reStyletwo ">
             {dataCategories.slice(4, 6).map((data, index) => (
               <div className="col-md-12" key={index}>
                 <Link
@@ -201,7 +208,7 @@ const Category = ({ uzbek, russian, english, changeCategories }) => {
             ))}
           </div>
           {dataCategories.slice(3, 4).map((data, index) => (
-            <div className="col-md-6 one" key={index}>
+            <div className="col-md-6 one reStyleone" key={index}>
               <Link
                 to={`/products`}
                 onClick={() => changeCategories(data.id)}

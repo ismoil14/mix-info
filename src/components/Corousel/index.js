@@ -16,8 +16,6 @@ console.log(img3,'img3')
             </div>
             <div className="macimg">
               <img src={img3} alt="" />
-            </div><div className="macimg">
-              <img src={img3} alt="" />
             </div>
           </Carousel>
     </div>

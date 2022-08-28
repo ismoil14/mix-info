@@ -12,7 +12,7 @@
   }
   .global-cont {
     width: 100%;
-    height:  66.796875vw;
+    height: 68.796875vw;
     background-color: black;
     padding: 5.208333333333333vw;
     h1 {
@@ -29,56 +29,84 @@
     .global-img-container {
       width: 100%;
       position: relative;
-      img{    width: 80.01302083333333vw;}
+      img {
+        width: 80.01302083333333vw;
+      }
       .btn {
-        padding:  0.8463541666666666vw 4.361979166666667vw;
-        font-size:  1.6276041666666667vw;
+        padding: 0.8463541666666666vw 4.361979166666667vw;
+        font-size: 1.6276041666666667vw;
         background-color: rgb(0, 0, 0);
         color: #ffb800;
         border: 0.13020833333333334vw solid #ffb800;
         position: absolute;
-        
+
         font-family: Arial, Helvetica, sans-serif;
-        border-radius:  0.8463541666666666vw;
-        font-family: 'Arial';
+        border-radius: 0.8463541666666666vw;
+        font-family: "Arial";
         font-style: normal;
         font-weight: 700;
         transition: 0.7s;
-        font-size:  1.6742252604166667vw;
+        font-size: 1.6742252604166667vw;
         line-height: 2.5390625vw;
-    &:hover{
-        background-color: #ffb800;
-        color: #ffffff;
+        &:hover {
+          background-color: #ffb800;
+          color: #ffffff;
+        }
+        padding: 0.8463541666666666vw 4.361979166666667vw;
+    font-size: 1.6276041666666667vw;
+    background-color: black;
+    color: #ffb800;
+    border: 0.13020833333333334vw solid #ffb800;
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 0.8463541666666666vw;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    transition: 0.7s;
+    font-size: 2vw;
+    line-height: 3.539063vw;
+      }
+      .btn-usa {
+        left: 72.546875vw;
+        top: 13vw;
     }
-      }.btn-usa{
-        left: 10.546875vw;
+      .btn-ge {
+        left: -0.755208vw;
+        top: 5.976563vw;
+        padding: 0.8463541666666666vw 1.6927083333333333vw;
+    }
+      .btn-av {
+        left: 0;
+        bottom: 39.53125vw;
+        padding: 0.8463541666666666vw 3.125vw;
+        
       }
-      .btn-ge{
-        right: 9.244791666666666vw;
-        top: 0.9765625vw;    padding:  0.8463541666666666vw  1.6927083333333333vw;
-      }
-      .btn-av{
+      .btn-tu {
+        display: none;
 
-      }
-      .btn-tu{
-        padding:  0.8463541666666666vw 3.125vw;top: 16.471354166666668vw;
+        padding: 0.8463541666666666vw 3.125vw;
+        top: 16.471354166666668vw;
         right: 25.390625vw;
       }
-      .btn-ru{
-        padding:  0.8463541666666666vw  3.515625vw;
+      .btn-ru {
+        display: none;
+
+        padding: 0.8463541666666666vw 3.515625vw;
         bottom: 0;
-        left:  8.463541666666666vw;
+        left: 8.463541666666666vw;
       }
-      .btn-ja{
-        right:  30.924479166666668vw;
-        bottom:  3.515625vw;
-        padding:  0.8463541666666666vw 0.7161458333333334vw;
+      .btn-ja {
+        display: none;
+        right: 30.924479166666668vw;
+        bottom: 3.515625vw;
+        padding: 0.8463541666666666vw 0.7161458333333334vw;
       }
-      .btn-av{
-        left: 0;
-        bottom: 19.53125vw;  
-          padding:  0.8463541666666666vw  3.125vw;
-      }
+      .btn-av {
+        left: 11vw;
+        bottom: -0.46875vw;
+        padding: 0.8463541666666666vw 3.125vw;
+    }
     }
   }
 }

@@ -564,7 +564,7 @@ const App = () => {
             uzbek={uzbek}
             changeModal={changeModal}
             urlLikes={urlLikes}
-            CardData={dataProducts}
+            CardData={CardData}
             Electronics={dataCategories}
             ProdName={dataSubCategories}
             all={true}
@@ -640,6 +640,7 @@ const App = () => {
                   image={data.image}
                   image1={data.image1}
                   image2={data.image2}
+                  image3={data.image3}
                   video={data.video}
                   description_ru={data.description_ru}
                   code={data.product_code}
@@ -672,6 +673,7 @@ const App = () => {
                   image={data.image}
                   image1={data.image1}
                   image2={data.image2}
+                  image3={data.image3}
                   video={data.video}
                   description_uz={data.description_uz}
                   code={data.product_code}

@@ -154,9 +154,17 @@
 }.responsev {
     align-items: flex-start;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: 6.119791666666667vw;
-}.carousel-root {
+   
+}
+.responsev ul {
+  padding-left: 0 ;
+}
+.Prod .wrapper .one-product .row .col-md-6{
+  padding-left: 0;
+}
+.carousel-root {
     outline: none;
 }.responsev_item .carousel-slider {
     overflow: visible!important;

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style/style.scss";
 import flags from "./img/flag.png";
-import globus from "./img/Globus.png";
+import globus from "./img/Globus2.png";
 import {t} from 'i18next'
 export default function InfoGlobal() {
   return (
@@ -16,9 +16,9 @@ export default function InfoGlobal() {
           </h1>
         <div className="global-img-container">
           <img src={globus} />
-          <button className="btn btn-usa" >Tojikiston </button>
-          <button className="btn btn-ge" >Qozog'iston  </button>
-          <button className="btn btn-av" >Qirg'iziston</button>
+          <button className="btn btn-usa" >TOJIKISTON </button>
+          <button className="btn btn-ge" >QOZOG'ISTON  </button>
+          <button className="btn btn-av" >QIRG`IZISTON</button>
           <button className="btn btn-tu" >TURKIYA</button>
           <button className="btn btn-ru" >ROSSIA</button>
           <button className="btn btn-ja" >JANUBIY KOREYA</button>

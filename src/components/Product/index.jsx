@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Card, CategoryTitles } from "./style";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import "./Scss/Prod.scss";
 import axios from "axios";
-import Shop from "./images/bag.png";
+import Shop from "./images/bagZB.png";
+import ShopT from "./images/bagZT.png";
 import { t } from "i18next";
-import { Electronics, 
+import {
+  Electronics,
   // CardData
- } from "../../utils/electronics";
+} from "../../utils/electronics";
 import {
   Cached,
   Check,
@@ -16,16 +19,25 @@ import {
   VerifiedUserOutlined,
   Visibility,
 } from "@material-ui/icons";
+
 // import ShareIcon from '@mui/icons-material/Share';
 import ShareIconImg from "./images/share.png";
 import commit from "../../assets/imgs/commit.png";
-import bass from "../../assets/imgs/bass.png";
+
 import { Rating } from "@mui/material";
 import { Box } from "@material-ui/core";
 import Corousel from "../Corousel";
 import SmallCor from "./SmallCor";
-import note from "../NoteCard/img/note.png";
-import NoteCatd from "../NoteCard/index";
+
+import {
+  addToCart,
+  increament,
+  decrement,
+  clear,
+} from "../../Redux/Reducer/cartSlice";
+import { cartTotalPriceSelector } from "../../Redux/Reducer/selectors";
+import Cart from "./Cart";
+
 export const Products = ({
   allResult,
   addCountAdd,
@@ -51,33 +63,38 @@ export const Products = ({
   image2,
   image3,
   desc,
-  code,description_uz ,description_ru,description_en,
+  code,
+  description_uz,
+  description_ru,
+  description_en,
   price,
   category,
 }) => {
+  let countParams = 0;
   // console.log('image3',image3)
   // Electronics, ProdName, CardData,//
+
+  const dispatch = useDispatch();
+  const totalPrice = useSelector(cartTotalPriceSelector);
+  const cart = useSelector((state) => state.cart);
+
   const [CardData, setProductInfo] = useState([]);
+
   useEffect(() => {
     axios
       .get("https://api-mixinfo.abba.uz/products/")
-      .then(({data}) => {
-        console.log(data, "ProductInfoCardData");
+      .then(({ data }) => {
+        // console.log(data, "ProductInfoCardData");
         setProductInfo(data);
       })
       .catch((err) => {
-        
         console.log(err, "err");
       });
   }, []);
-  
+
   // console.log(CardData[2], "CardData");
   // categories
-  const info = {
-    text: "У вас нет заказов",
-    info: "чтобы закасать переходите кудата и нажмите что то",
-    img: note,
-  };
+
   const { pathname } = useLocation();
   const [allCat, setAllCat] = useState(false);
 
@@ -214,8 +231,8 @@ export const Products = ({
       countProd.map((c) => c.num)
     );
   });
-// const [addProdColk, setAddProdColk] = useState(0);
-// console.log(countProd,'countProd')
+  // const [addProdColk, setAddProdColk] = useState(0);
+  // console.log(countProd,'countProd')
   function incProd(item) {
     setCountProd(
       countProd.map((c) => ({
@@ -456,14 +473,11 @@ export const Products = ({
     setIndexImg(c.indexOf(e));
   }
 
+  // const cartT = useSelector((state) => state.cart);
+  // const cardCont = cartT.map((d) => d.id);
+  // const cardContInfo = CardData.map((d) => d.id);
 
-
-
-
-
-  
-
-
+  // console.log(cardContInfo, "cardContInfo", cardCont, "cardCont");
   return (
     <>
       <div
@@ -517,7 +531,7 @@ export const Products = ({
                       <div className="header">
                         <div className="nav-link navigator">
                           <img
-                            src={value.image}
+                            src={value.image1}
                             alt="errCard"
                             className="img"
                           />
@@ -610,7 +624,7 @@ export const Products = ({
                         <div className="card-bottom">
                           {value.aksiya ? (
                             <h3>
-                              $ {value.aksiya}{" "}
+                              $ {value.price}{" "}
                               <s className="old-price">$ {value.price}</s>
                             </h3>
                           ) : (
@@ -646,6 +660,12 @@ export const Products = ({
           {saved && (
             <div className="products row mb-5 pb-5">
               {CardData.map((value) => {
+                console.log(
+                  likes.toString().includes(value.id) === true
+                    ? countParams + 1
+                    : "",
+                  "likes.toString().includes(value.id)"
+                );
                 return (
                   <Card
                     key={value.id}
@@ -665,7 +685,7 @@ export const Products = ({
                             {value.sale ? "New" : "Sale"}
                           </div>
                           <Link
-                            to={`product/${value.id}`}
+                            to={`/product/${value.id}`}
                             className="nav-link contr-navigator"
                           ></Link>
                           <div className="left-tools">
@@ -724,12 +744,12 @@ export const Products = ({
                               </label>
                             </div>
                             <div className="icon">
+                              {/* <ShareIconImg className="cache" /> */}
                               <img
                                 src={ShareIconImg}
                                 alt="..."
                                 className="cache"
                               />
-                              {/* <ShareIconImg  className="cache" /> */}
                             </div>
                             <div
                               className="icon"
@@ -746,15 +766,11 @@ export const Products = ({
                           {russian && value.name_ru}
                           {uzbek && value.name_uz}
                         </h2>
-                        <div className="card-bottom 9999">
-                          {value.aksiya ? (
-                            <h3>
-                              $ {value.aksiya}{" "}
-                              <s className="old-price">$ {value.price}</s>
-                            </h3>
-                          ) : (
-                            <h3>$ {value.price}</h3>
-                          )}
+                        <div className="card-bottom">
+                          <h3>
+                            $ {value.price}{" "}
+                            <s className="old-price">$ {value.price}</s>
+                          </h3>
                           <Box sx={{ "& > legend": { mt: 2 } }}>
                             <Rating
                               className="rating"
@@ -784,7 +800,7 @@ export const Products = ({
           {top && (
             <h1 id="hotsale" className="hot">
               {/* HOT SALES */}
-              {t('126')}
+              {t("126")}
             </h1>
           )}
 
@@ -838,7 +854,6 @@ export const Products = ({
                         <div className="nav-link navigator">
                           <img
                             src={value.image1}
-                            
                             alt="errCard"
                             className="img"
                           />
@@ -846,7 +861,7 @@ export const Products = ({
                             {value.sale ? "New" : "Sale"}
                           </div>
                           <Link
-                            to={`product/${value.id}`}
+                            to={`/product/${value.id}`}
                             className="nav-link contr-navigator"
                           ></Link>
                           <div className="left-tools">
@@ -898,19 +913,29 @@ export const Products = ({
                                 />
                               )}
                               <label
+                                // onClick={() => addCountAdd()}
+                               
                                 htmlFor={`${1 - value.id}`}
                                 className="add-btn"
                               >
-                                <img src={Shop} />
+                                {cart?.some((ct) => ct.id === value.id) ? (
+                                  <img  onClick={() => {
+                                    cart?.some((ct) => ct.id === value.id)? {}: dispatch(addToCart( cart?.some((ct) => ct.id === value.id)-value));
+                                  }} src={ShopT} />
+                                ) : (
+                                  <img  onClick={() => {
+                                    cart?.some((ct) => ct.id === value.id)? {}: dispatch(addToCart(value));
+                                  }} src={Shop} />
+                                )}
                               </label>
                             </div>
                             <div className="icon">
+                              {/* <ShareIconImg className="cache" /> */}
                               <img
                                 src={ShareIconImg}
                                 alt="..."
                                 className="cache"
                               />
-                              {/* <ShareIconImg className="cache" /> */}
                             </div>
                             <div
                               className="icon"
@@ -923,24 +948,20 @@ export const Products = ({
                       </div>
                       <Card.Footer className="footer">
                         <h2>
+                          {english && value.name_en}
                           {russian && value.name_ru}
                           {uzbek && value.name_uz}
-                          {english && value.name_en}
                         </h2>
-                        <div className="card-bottom 999">
-                          {value.sale ? (
-                            <h3>
-                              $ {value.price}{" "}
-                              <s className="old-price">$ {value.price}</s>
-                            </h3>
-                          ) : (
-                            <h3>$ {value.price}</h3>
-                          )}
+                        <div className="card-bottom">
+                          <h3>
+                            $ {value.price}{" "}
+                            <s className="old-price">$ {value.price}</s>
+                          </h3>
                           <Box sx={{ "& > legend": { mt: 2 } }}>
                             <Rating
                               className="rating"
                               name="read-only"
-                              value={value.likes-1}
+                              value={value.rate}
                               readOnly
                             />
                           </Box>
@@ -954,321 +975,25 @@ export const Products = ({
           )}
           {/* {console.log(addedProds.length,'card.length')} */}
           {/* {addedProds.length > 1 ?   */}
-          {card &&
-            (addedProds.length > 0 ? (
-              <div className="col-12 card-modal">
-                <h1 className="title text-white">{t("my")}</h1>
-                {CardData.map(
-                  (item) =>
-                    addedProds != 0 &&
-                    addedProds.map((post, index) => (
-                      <div
-                        className={`col-12 one-prod ${
-                          post != item.id && "d-none"
-                        }`}
-                        key={index}
-                      >
-                        <div className="col-2 img">
-                          <img src={item.image1} alt="" />
-                        </div>
-                        <div className="col-4 name-div ">
-                          <h3 className="d-flex justify-content-between">
-                            {english && item.name_en} {russian && item.name_ru}{" "}
-                            {uzbek && item.name_uz}
-                          </h3>
 
-                          <div className="tools tools-price">
-                            <h4>
-                              {t('68')}:
-                              <span>{item.price}$</span>{" "}
-                            </h4>
-                          </div>
-                          {/* <h4>{console.log(countProd,'countProd')} d{countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count}</h4> */}
-                          {/* <h3 className="d-flex justify-content-between">{english && item.name_en} {russian && item.name_ru} {uzbek && item.name_uz} <p className="h6">$ {item.price}</p></h3> */}
-
-                          {/* <h4>{t("total")}: ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count}</h4>    */}
-                        </div>
-                        {/* <div className="col-5 middle col-5 middle">
-                        <div className=" d-flex">
-                          <div
-                            className="col-3 dec"
-                            onClick={() => decProd(item.id)}
-                          >
-                            -
-                          </div>
-                          <div className="col-6 result">
-                            {item.id}
-                            {countProd.length != 0
-                              ? countProd.map(
-                                  (cl) =>
-                                    countProd.indexOf(cl) + 1 == item.id &&
-                                    cl.num
-                                )
-                              : item.count}
-                          </div>
-                          <div
-                            className="col-3 inc"
-                            onClick={() => incProd(item.id)}
-                          >
-                            +
-                          </div>
-                        </div>
-                      </div> */}
-
-                        <div className="col-2 middle piliusMInus">
-                          <div className="tools">
-                            <div className="d-flex col-4">
-                              <div
-                                className=" dec"
-                                onClick={() => decProd(item.id)}
-                              >
-                                <p>-</p>{" "}
-                              </div>
-                              <div className="col-6 result">
-                                {countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num) : item.count}
-                                2
-                              </div>
-                              <div
-                                className=" inc"
-                                onClick={() => incProd(item.id)}
-                              >
-                                <p>+</p>
-                              </div>
-                            </div>
-                            <h4>
-                              {t('101')}:
-                              {/* ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count} */}
-                            </h4>
-                          </div>
-                        </div>
-                        <div className="col-2 middle priceI">
-                          <div className="tools">
-                            <div className="d-flex col-4">
-                              {countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num) : item.count}
-                              40
-                              <span>$</span>
-                            </div>
-                            <h4>
-                            {t('68')}:
-                              ${countProd.length != 0 ? countProd.map((cl) => countProd.indexOf(cl) + 1 == item.id && cl.num * item.price) : item.count}
-                            </h4>
-                          </div>
-                        </div>
-                        <div className="col-2 like-delet">
-                          {/* {likes.toString().includes(item.id) && (
-                          <input
-                            type="checkbox"
-                            checked
-                            onChange={() => unlikes(item.id)}
-                            className={`checkbox`}
-                            id={item.id + 1}
-                          />
-                        )}
-                        {!likes.toString().includes(item.id) && (
-                          <input
-                            type="checkbox"
-                            onChange={() => getLikes(item.id)}
-                            className={`checkbox`}
-                            id={item.id + 1}
-                          />
-                        )} */}
-                          {/* <label htmlFor={item.id + 1}>
-                          <i
-                            onClick={() => addCountLike(item.id)}
-                            className={`fa fa-heart-o`}
-                          ></i>
-                          <i
-                            onClick={() => deletCountLike(item.id)}
-                            className={`fa fa-heart`}
-                          ></i>
-                        </label> */}
-                          {addProducts.toString().includes(item.id) && (
-                            <input
-                              type="checkbox"
-                              className="addedProduct"
-                              id={1 - item.id}
-                              onChange={() => deleteCard(item.id)}
-                              checked
-                            />
-                          )}
-                          {!addProducts.toString().includes(item.id) && (
-                            <input
-                              type="checkbox"
-                              id={`${1 - item.id}`}
-                              onChange={() => getAdd(item.id)}
-                              className={`addedProduct`}
-                            />
-                          )}
-                          <label
-                            htmlFor=""
-                            className="add-btn 
-                         d_flex"
-                          >
-                            <div
-                              className="icon"
-                              onClick={() => filterData(value.id)}
-                            >
-                              {" "}
-                              <Visibility className="eye" />{" "}
-                            </div>
-                          </label>
-                          <label
-                            onClick={() => addCountAdd()}
-                            htmlFor={`${1 - item.id}`}
-                            className="add-btn ghl"
-                          >
-                            Hoziroq xarid qilish
-                          </label>
-                          <label
-                            onClick={() => deletCountAdd()}
-                            htmlFor={`${1 - item.id}`}
-                            className="add-btn dfl"
-                          >
-                            <i className="fa fa-trash-o"></i>
-                          </label>
-                        </div>
-                      </div>
-                    ))
-                )}
-                <h3 className="mt-5 text-white">
-                  {t("total")}: $ {nbm}
-                </h3>
-
-                <div className="info-calc">
-                  <hr />
-                  <div className="info-text">
-                    <div className="left">
-                      <i className="fa fa-gift" aria-hidden="true"></i>
-                      <h1>
-                      {t("100")}
-                        {/* закажите прямо сейчас и получите бесплатную доставку в
-                        подарок */}
-                      </h1>
-                    </div>
-                    <div className="right">
-                      <span>  {t("59")}:</span> <h1>220$</h1>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-md-12 buy-all">
-                  <Link to="/">
-                    <button className="clous btn-buy">
-                      <i className="fa fa-long-arrow-left"></i> 
-                      {/* Назад */}
-                       {t('69')}
-                    </button>
-                  </Link>
-
-                  {/* <button className="btn" onClick={() => openModal(true)}>
-                  {t("buyall")}
-                </button> */}
-                  <Link to="/payment">
-                    <button className=" btn-buy btn-big">
-                      {/* <i className="fa fa-gift" aria-hidden="true"></i> */}
-                      <img className="fa fa-gift bass" src={bass} alt="" />
-                      {/* Покупать все */}
-                      {t('71')}
-                    </button>
-                  </Link>
-                  {/* <button
-                  className=" btn-buy btn-big"
-                  onClick={() => openModal(true)}
-                >
-                  <i className="fa fa-gift" aria-hidden="true"></i> Покупать все
-                </button> */}
-                </div>
-                <div className={`col-12 row checkout ${!buyModal && "d-none"}`}>
-                  <i
-                    className="fa fa-times"
-                    onClick={() => openModal(false)}
-                  ></i>
-                  <div className="col-md-6">
-                    <label className="form-label" htmlFor="">
-                      {t("name")}
-                    </label>
-                    <input
-                      className={`${redName && "red-line"} form-control`}
-                      value={nameValue}
-                      onChange={(e) => handleChange1(e.target.value)}
-                      type="text"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="form-label" htmlFor="">
-                      {t("location")}
-                    </label>
-                    <input
-                      className={`${redText && "red-line"} form-control`}
-                      value={value}
-                      onChange={(e) => handleChange3(e.target.value)}
-                      type="text"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="form-label" htmlFor="">
-                      {t("date")}
-                    </label>
-                    <input
-                      className={`${redDate && "red-line"} form-control`}
-                      value={date}
-                      onChange={(e) => handleChange4(e.target.value)}
-                      type="date"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="form-label" htmlFor="">
-                      {t("phone")}
-                    </label>
-                    <input
-                      className={`${redNumber && "red-line"} form-control`}
-                      value={numberValue}
-                      onChange={(e) => handleChange2(e.target.value)}
-                      type="number"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="form-label" htmlFor="">
-                      {t("email")}
-                    </label>
-                    <input
-                      className={`${redEmail && "red-line"} form-control`}
-                      value={email}
-                      onChange={(e) => handleChange5(e.target.value)}
-                      type="email"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label className="form-label" htmlFor="">
-                      {t("user")}
-                    </label>
-                    <input
-                      className={`${redPosition && "red-line"} form-control`}
-                      value={userPosition}
-                      onChange={(e) => handleChange6(e.target.value)}
-                      type="text"
-                    />
-                  </div>
-                  <div className="col-md-12">
-                    <button className="btn" onClick={() => sendMessage()}>
-                      {t("check")}
-                    </button>
-                  </div>
-                </div>
-                <div
-                  className={`contr-card ${!buyModal && "d-none"}`}
-                  onClick={() => openModal(false)}
-                ></div>
-              </div>
-            ) : (
-              <NoteCatd text={info.text} img={info.img} info={info.info} />
-            ))}
+          {card && <Cart uzbek={uzbek} english={english} russian={russian} />}
 
           {oneProd && (
             <div className="one-product col-md-12">
+              <Link to="/products">
+                <button className="ToBack">
+                  {" "}
+                  <i
+                    className="fa fa-long-arrow-left"
+                    aria-hidden="true"
+                  ></i>{" "}
+                  {t("135")}
+                </button>
+              </Link>
+
               <div className="row col-md-12">
                 <div className="col-md-6 img">
-                  {console.log(image1,'image1')}
+                  {console.log(image1, "image1")}
                   {/* <div className="body">
                     {otherImages
                       .slice(indexImg, indexImg + 1)
@@ -1277,7 +1002,7 @@ export const Products = ({
                       ))}
                   </div> */}
 
-                  <Corousel img1={image1} img2={image2}img3={image3} />
+                  <Corousel img1={image1} img2={image2} img3={image3} />
                   {/* {console.log(image3,'image3')} */}
                 </div>
                 <div className="col-md-6 g0">
@@ -1339,15 +1064,17 @@ export const Products = ({
                           className={`addedProduct`}
                         />
                       )} */}
-                      <label
+                      <Link to="/payment" className="add-btn ghl">
+                        <label
                         // onClick={() => addCountAdd()}
-                        onClick={() => openModal(true)}
-                        htmlFor={`${1 - id}`}
-                        className="add-btn ghl"
-                      >
-                        {/* {t("cart")} */}
-                        Hoziroq xarid qilish
-                      </label>
+                        // onClick={() => openModal(true)}
+                        // htmlFor={`${1 - id}`}
+                        // className="add-btn ghl"
+                        >
+                          {/* {t("cart")} */}
+                          Hoziroq xarid qilish
+                        </label>
+                      </Link>
 
                       <div
                         className={`col-12 row checkout ${
@@ -1500,7 +1227,7 @@ export const Products = ({
                   <i className={`fa fa-heart`}></i>
                 </label>
                 <label className="post-love post-tocommit">
-                 <img src={commit} alt="" />
+                  <img src={commit} alt="" />
                 </label>
                 <div className="discription"></div>
                 <h3 className="description mt-5">Description</h3>
@@ -1535,14 +1262,16 @@ export const Products = ({
                   активностью,панели не бояться прямого попадания брызг.
                 </p> */}
 
-                <p> {english && description_en}{" "}
-                  {russian && description_ru}{" "}
-                  {uzbek && description_uz}</p>
+                <p>
+                  {" "}
+                  {english && description_en} {russian && description_ru}{" "}
+                  {uzbek && description_uz}
+                </p>
               </div>
               <h3 className="recommend text-white mobileNone">
                 {t("recommend")}:
               </h3>
-              <div className="col-12 slide-tools mobileNone">
+              {/* <div className="col-12 slide-tools  mobileNone">
                 <div className="d-flex c2">
                   <i
                     className={`fa fa-angle-left ${activeSlick && "active"}`}
@@ -1555,7 +1284,7 @@ export const Products = ({
                     onClick={() => decrement1()}
                   ></i>
                 </div>
-              </div>
+              </div> */}
               <div className="products row top mobileNone">
                 {CardData.map((value) => {
                   return (
@@ -1571,7 +1300,7 @@ export const Products = ({
                           <div className="header">
                             <div className="nav-link navigator">
                               <img
-                                src={value.image}
+                                src={value.image1}
                                 alt="errCard"
                                 className="img"
                               />
@@ -1579,7 +1308,7 @@ export const Products = ({
                                 {value.sale ? "New" : "Sale"}
                               </div>
                               <Link
-                                to={`product/${value.id}`}
+                                to={`/product/${value.id}`}
                                 className="nav-link contr-navigator"
                               ></Link>
                               <div className="left-tools">
@@ -1667,7 +1396,7 @@ export const Products = ({
                             </h2>
                             <div className="card-bottom">
                               <h3>
-                                $ {value.aksiya}{" "}
+                                $ {value.price}{" "}
                                 <s className="old-price">$ {value.price}</s>
                               </h3>
                               <Box sx={{ "& > legend": { mt: 2 } }}>
@@ -1694,7 +1423,7 @@ export const Products = ({
               key={data.id}
               className={`prod-info col-md-12 row ${!isModal && "d-none"}`}
             >
-            {console.log('oneData',oneData)}
+              {console.log("oneData8", oneData)}
 
               <Close className="close-icon" onClick={() => backFilter()} />
               <div className="col-md-6 img  modal-fix">
@@ -1705,25 +1434,26 @@ export const Products = ({
                   ))} */}
 
                 {/* <Corousel /> */}
-                <SmallCor img1={data.image1}img2={data.image2}img3={data.image3} />
+                <SmallCor
+                  img1={data.image1}
+                  img2={data.image2}
+                  img3={data.image3}
+                />
 
                 {/* modal  */}
               </div>
               <div className="col-md-5 text text-modal">
                 <h1>
                   {/* Stul kakoyto */}
-
-                {english && data.name_en}{" "}
-                  {russian && data.name_ru}{" "}
+                  {english && data.name_en} {russian && data.name_ru}{" "}
                   {uzbek && data.name_uz}
-
                 </h1>
                 <p>
                   {/* Stul kakoyto */}
                   {english && data.description_en}{" "}
                   {russian && data.description_ru}{" "}
                   {uzbek && data.description_uz}
-                  </p>
+                </p>
                 <p>Minimal iconic chair</p>
 
                 <div className="card-info">

@@ -2,9 +2,11 @@ import { configureStore, combineReducers, compose } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import sideBar from './Reducer/SideBar'
 import userSlice from "./Reducer/UserSlice";
+import cartReducer from "./Reducer/cartSlice";
 
 const rootReducer = combineReducers({
   user: userSlice,
+  cart: cartReducer,
   sideBar
 });
 

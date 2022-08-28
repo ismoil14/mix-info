@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-
+import Loader from '../Loader/Load'
 import {
   Card,
 
 } from "./style";
 import "./Scss/Prod.scss";
-import Shop from "./images/bag.png";
+// import Shop from "./images/bag.png";
+import ShareIconImg from "./images/share.png";
+import commit from "../../assets/imgs/commit.png";
+import Shop from "./images/bagZB.png";
+import ShopT from "./images/bagZT.png";
 import { t} from "i18next";
+import {
+  addToCart,
+  increament,
+  decrement,
+  clear,
+} from "../../Redux/Reducer/cartSlice";
+import { cartTotalPriceSelector } from "../../Redux/Reducer/selectors";
 // import { Electronics, ProdName, CardData } from "../../utils/electronics";
 import {
   Cached,
@@ -35,30 +46,43 @@ export default function AllCard({
   dataBlogs ,
   subTips,
   english,
+  seeAll,
   russian,
   uzbek,
   changeModal,
   all,
   image,
   image1,
-  image2,
+  image2,CardData,
 }) {
     
+  const dispatch = useDispatch();
+  const totalPrice = useSelector(cartTotalPriceSelector);
+  const cart = useSelector((state) => state.cart);
 
 
-  const [CardData, setProductInfo] = useState([]);
-  useEffect(() => {
-    axios
-      .get("https://api-mixinfo.abba.uz/products/")
-      .then(({data}) => {
-        console.log(data, "ProductInfoCardData");
-        setProductInfo(data);
-      })
-      .catch((err) => {
+  // const [CardData, setProductInfo] = useState([]);
+  // const [Loading, setLoading] = useState(false);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   let zzz= true;
+  //   axios
+  //     .get("https://api-mixinfo.abba.uz/products/")
+  //     .then(({data}) => {
         
-        console.log(err, "err");
-      });
-  }, []);
+  //       // console.log(data, "ProductInfoCardData");
+  //       setProductInfo(data);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       setLoading(false);
+  //       console.log(err, "err");
+  //     });
+  //     return function cleanup(){
+  //       zzz= false;
+  //     }
+  // }, []);
   const [allCat, setAllCat] = useState(false);
 
   let radio = document.querySelectorAll(".radio");
@@ -427,13 +451,14 @@ export default function AllCard({
   }
 
   return (
-    <div 
+    <div  onLoad={seeAll()}
     
     className={`AllProd ${open && "prod-pedding"}`}
     // style={open === true ? {paddingLeft:"400px"}:{}}  className="AllProd"
     >
       {all && (
-        <div className="products allCard row">
+        <div className="products allCard row 66666">
+          {/* {Loading && <Loader/> } */}
           {CardData.map((value) => {
             return (
               <Card
@@ -443,109 +468,124 @@ export default function AllCard({
                 } ${allResult && "d-block"}`}
               >
                 <div className="body">
-                  <div className="header">
-                    <a className="nav-link navigator">
-                      <img src={value.image1} alt="errCard" className="img" />
-                      <div className="top-left">
-                        {value.sale ? t('133') : t('134')}
+                      <div className="header">
+                        <div className="nav-link navigator">
+                          <img
+                            src={value.image1}
+                            alt="errCard"
+                            className="img"
+                          />
+                          <div className="top-left">
+                            {value.sale ? "New" : "Sale"}
+                          </div>
+                          <Link
+                            to={`/product/${value.id}`}
+                            className="nav-link contr-navigator"
+                          ></Link>
+                          <div className="left-tools">
+                            <div className="icon">
+                              {likes.toString().includes(value.id) && (
+                                <input
+                                  type="checkbox"
+                                  checked
+                                  onChange={() => unlikes(value.id)}
+                                  className={`checkbox`}
+                                  id={value.id + 1}
+                                />
+                              )}
+                              {!likes.toString().includes(value.id) && (
+                                <input
+                                  type="checkbox"
+                                  onChange={() => getLikes(value.id)}
+                                  className={`checkbox`}
+                                  id={value.id + 1}
+                                />
+                              )}
+                              <label htmlFor={value.id + 1}>
+                                <i
+                                  onClick={() => addCountLike(value.id)}
+                                  className={`fa fa-heart-o`}
+                                ></i>
+                                <i
+                                  onClick={() => deletCountLike(value.id)}
+                                  className={`fa fa-heart`}
+                                ></i>
+                              </label>
+                            </div>
+                            <div className="icon">
+                              {addProducts.toString().includes(value.id) && (
+                                <input
+                                  type="radio"
+                                  className="addedProduct"
+                                  id={1 - value.id}
+                                  onChange={() => deleteCard(value.id)}
+                                  checked
+                                />
+                              )}
+                              {!addProducts.toString().includes(value.id) && (
+                                <input
+                                  type="radio"
+                                  id={`${1 - value.id}`}
+                                  onChange={() => getAdd(value.id)}
+                                  className={`addedProduct`}
+                                />
+                              )}
+                              <label
+                                // onClick={() => addCountAdd()}
+                                onClick={() => {
+                                  cart?.some((ct) => ct.id === value.id)
+                                    ? {}
+                                    : dispatch(addToCart(value));
+                                }}
+                                htmlFor={`${1 - value.id}`}
+                                className="add-btn"
+                              >
+                                {cart?.some((ct) => ct.id === value.id) ? (
+                                  <img src={ShopT} />
+                                ) : (
+                                  <img src={Shop} />
+                                )}
+                              </label>
+                            </div>
+                            <div className="icon">
+                              {/* <ShareIconImg className="cache" /> */}
+                              <img
+                                src={ShareIconImg}
+                                alt="..."
+                                className="cache"
+                              />
+                            </div>
+                            <div
+                              className="icon"
+                              onClick={() => filterData(value.id)}
+                            >
+                              <Visibility className="eye" />
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <Link
-                        to={`product/${value.id}`}
-                        className="nav-link contr-navigator"
-                      ></Link>
-                      <div className="left-tools">
-                        <div className="icon">
-                          {likes.toString().includes(value.id) && (
-                            <input
-                              type="checkbox"
-                              checked
-                              onChange={() => unlikes(value.id)}
-                              className={`checkbox`}
-                              id={value.id + 1}
+                      <Card.Footer className="footer">
+                        <h2>
+                          {english && value.name_en}
+                          {russian && value.name_ru}
+                          {uzbek && value.name_uz}
+                        </h2>
+                        <div className="card-bottom">
+                          <h3>
+                            $ {value.price}{" "}
+                            <s className="old-price">$ {value.price}</s>
+                          </h3>
+                          <Box sx={{ "& > legend": { mt: 2 } }}>
+                            <Rating
+                              className="rating"
+                              name="read-only"
+                              value={value.rate}
+                              readOnly
                             />
-                          )}
-                          {!likes.toString().includes(value.id) && (
-                            <input
-                              type="checkbox"
-                              onChange={() => getLikes(value.id)}
-                              className={`checkbox`}
-                              id={value.id + 1}
-                            />
-                          )}
-                          <label htmlFor={value.id + 1}>
-                            <i
-                              onClick={() => addCountLike(value.id)}
-                              className={`fa fa-heart-o`}
-                            ></i>
-                            <i
-                              onClick={() => deletCountLike(value.id)}
-                              className={`fa fa-heart`}
-                            ></i>
-                          </label>
+                          </Box>
                         </div>
-                        <div className="icon">
-                          {addProducts.toString().includes(value.id) && (
-                            <input
-                              type="radio"
-                              className="addedProduct"
-                              id={1 - value.id}
-                              onChange={() => deleteCard(value.id)}
-                              checked
-                            />
-                          )}
-                          {!addProducts.toString().includes(value.id) && (
-                            <input
-                              type="radio"
-                              id={`${1 - value.id}`}
-                              onChange={() => getAdd(value.id)}
-                              className={`addedProduct`}
-                            />
-                          )}
-                          <label
-                            htmlFor={`${1 - value.id}`}
-                            className="add-btn"
-                          >
-                            <img src={Shop} />
-                          </label>
-                        </div>
-                        <div className="icon">
-                          <Cached className="cache" />
-                        </div>
-                        <div
-                          className="icon"
-                          onClick={() => filterData(value.id)}
-                        >
-                          <Visibility className="eye" />
-                        </div>
-                      </div>
-                    </a> 
-                  </div>
-                  <Card.Footer className="footer">
-                    <h2>
-                      {english && value.name_en}
-                      {russian && value.name_ru}
-                      {uzbek && value.name_uz}
-                    </h2>
-                    <div className="card-bottom">
-                      {value.aksiya ? (
-                        <h3>
-                          $ {value.aksiya}{" "}
-                          <s className="old-price">$ {value.price}</s>
-                        </h3>
-                      ) : (
-                        <h3>$ {value.price}</h3>
-                      )}
-                      <Box sx={{ "& > legend": { mt: 2 } }}>
-                        <Rating
-                          className="rating"
-                          name="read-only"
-                          value={value.rate}
-                          readOnly
-                        />
-                      </Box>
+                      </Card.Footer>
                     </div>
-                  </Card.Footer>
-                </div>
               </Card>
             );
           })}

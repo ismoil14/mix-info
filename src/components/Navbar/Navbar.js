@@ -1,14 +1,11 @@
-import React, {
-  // useEffect, useRef,
-  useState,
-} from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setOpenSideBar } from "../../Redux/Reducer/SideBar";
 import "./Scss/Navbar.scss";
 import { Link, useLocation } from "react-router-dom";
 // import Img1 from './images/logo.png'
 // import { useTranslation } from 'react-i18next';
-import {t} from 'i18next'
+import { t } from "i18next";
 import {
   Close,
   KeyboardArrowDown,
@@ -19,7 +16,7 @@ import logo from "./images/logoMix.png";
 import menu from "../Footer/images/menu.png";
 import home from "./images/home.png";
 
-
+import { cartTotalSelector } from "../../Redux/Reducer/selectors";
 
 const Navbar = ({
   seeAll,
@@ -41,11 +38,12 @@ const Navbar = ({
   dataSubCategories,
 }) => {
   // scroll effect
+  console.log(seeAll(),'seeAll')
   const { pathname } = useLocation();
   const [innnerWidthI, setInnerWidthI] = useState(false);
+  const total = useSelector(cartTotalSelector);
 
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   function openMobile() {
     if (window.innerWidth < 850) {
       setInnerWidthI(true);
@@ -147,7 +145,7 @@ const Navbar = ({
           <div className="navbar-info">
             <h1>
               {/* Welcome to our online shop */}
-              {t('102')}
+              {t("102")}
             </h1>
             <li className="nav-item" onClick={() => clickedSearch(false)}>
               <div className="d-flex align-items-center justify-content-between">
@@ -178,7 +176,7 @@ const Navbar = ({
                     </label>
                     <ul className={`language-menu ${!language && "d-none"}`}>
                       <li onClick={() => changeHandle1()} className="nav-link">
-                      Russian (Ru)
+                        Russian (Ru)
                       </li>
                       <li onClick={() => changeHandle2()} className="nav-link">
                         English (USD)
@@ -192,12 +190,12 @@ const Navbar = ({
                 |
                 <Link to="/login" className="nav-link login">
                   {/* Login or Sign up */}
-                  {t('124')}
+                  {t("124")}
                 </Link>
               </div>
             </li>
           </div>
-          { pathname !== "/profile" && 
+          {pathname !== "/profile" &&
           pathname !== "/orders" &&
           pathname !== "/logout" ? (
             <>
@@ -220,18 +218,18 @@ const Navbar = ({
                         className={`${searchBar && "active"}`}
                         value={inputValue}
                         onChange={(e) => typeInput(e)}
-                        placeholder={t('125')}
+                        placeholder={t("125")}
                       />
                       <div
                         className="category-menu1"
                         onClick={() => openCategory1(true)}
                       >
-                        <span>{t('122')}</span>{" "}
+                        <span>{t("122")}</span>{" "}
                         <i className={`fa fa-angle-down d-block mx-2`}></i>
                         <div
                           className={`category-tools ${!catBar1 && "d-none"}`}
                         >
-                          {allCategories.map((data,index) => (
+                          {allCategories.map((data, index) => (
                             <Link
                               to="/products"
                               key={index}
@@ -257,7 +255,7 @@ const Navbar = ({
                           inputValue === "" && "d-none"
                         }`}
                       >
-                        {dataProducts.map((data,index) => (
+                        {dataProducts.map((data, index) => (
                           <Link
                             to={`/products/${data.id}`}
                             key={index}
@@ -272,7 +270,7 @@ const Navbar = ({
                             ></i>
                           </Link>
                         ))}
-                        {dataCategories.map((data,index) => (
+                        {dataCategories.map((data, index) => (
                           <Link
                             to="/products"
                             key={index}
@@ -287,7 +285,7 @@ const Navbar = ({
                             ></i>
                           </Link>
                         ))}
-                        {dataSubCategories.map((data,index) => (
+                        {dataSubCategories.map((data, index) => (
                           <Link
                             to="/products"
                             key={index}
@@ -364,7 +362,7 @@ const Navbar = ({
                     <li className="nav-item">
                       <Link to="/cart" className="nav-link mall">
                         <LocalMallOutlined className="local" />
-                        <span>{countAdd}</span>
+                        <span>{total}</span>
                       </Link>
                     </li>
                     <li
@@ -391,23 +389,30 @@ salom
               >
                 <div
                   className="category-menu"
-                  onClick={() => {openCategory(true);dispatch(setOpenSideBar(!catBar))}}
-
+                  onClick={() => {
+                    openCategory(true);
+                    dispatch(setOpenSideBar(!catBar));
+                  }}
                 >
                   {/* {console.log(catBar, "catBar")} */}
                   {/* <i
                 className={`fa fa-bars d-block mx-2 ${catBar && "d-none"}`}
               ></i>{" "} */}
-                  <img  
-                  // className={catBar && "d-none"} 
-                  src={menu} alt="" />
+                  <img
+                    // className={catBar && "d-none"}
+                    src={menu}
+                    alt=""
+                  />
 
                   {/* <Close className={`times d-block z-close mx-2 catBarNone ${catBar=== false ? "d-none":''}`} />{" "} */}
                   {/* <span>ALL COLLECTIONS</span> */}
-                  <span>{t('115')}</span>
+                  <span>{t("115")}</span>
                   <div
                     className={`category-tools ${
-                      ((window.innerWidth >870)&(open === true) & (pathname === "/") && "d-block") ||
+                      ((window.innerWidth > 870) &
+                        (open === true) &
+                        (pathname === "/") &&
+                        "d-block") ||
                       (!catBar && "d-none")
                     }
                 `}
@@ -424,9 +429,9 @@ salom
                       className="result nav-link px-0"
                       onClick={() => changeCategories(1)}
                     >
-                      <p>{t('126')} </p>
+                      <p>{t("126")} </p>
                     </a>
-                    {allCategories.map((data,index) => (
+                    {allCategories.map((data, index) => (
                       <Link
                         to="/products"
                         key={index}
@@ -448,31 +453,31 @@ salom
                   <li className="nav-item">
                     <Link to="/" className="nav-link">
                       {/* HOME */}
-                        {t('116')}
+                      {t("116")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/products" className="nav-link">
                       {/* SHOP */}
-                      {t('117')}
+                      {t("117")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/blog" className="nav-link">
                       {/* BLOG */}
-                      {t('118')}
+                      {t("118")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/aboutus" className="nav-link">
                       {/* ABOUT */}
-                      {t('119')}
+                      {t("119")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/support" className="nav-link">
                       {/* CONTACT US */}
-                      {t('120')}
+                      {t("120")}
                     </Link>
                   </li>
                   <Close
@@ -482,57 +487,53 @@ salom
                 </ul>
 
                 <ul className="mobile_bottom">
-
-                  <div className="mobile-item-nav">                  <li className="nav-item">
-                    <Link to="/" className="nav-link">
-                    <img src={home} alt="" />
-                      {/* HOME */}
-                      {t('116')}
-                    </Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link to="/saved" className="nav-link">
-                      <i className="fa fa-heart-o">
-                        <span>{countLike}</span>
-                      </i>
-                      LIKE
-                    </Link>
-                  </li></div>
-
-
-
+                  <div className="mobile-item-nav">
+                    {" "}
+                    <li className="nav-item">
+                      <Link to="/" className="nav-link">
+                        <img src={home} alt="" />
+                        {/* HOME */}
+                        {t("116")}
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/saved" className="nav-link">
+                        <i className="fa fa-heart-o">
+                          <span>{countLike}</span>
+                        </i>
+                        LIKE
+                      </Link>
+                    </li>
+                  </div>
 
                   <li className="nav-item">
                     <Link to="/" className="nav-link toMobile">
-                    <img src={logo} alt="" />
-                   
+                      <img src={logo} alt="" />
                     </Link>
                   </li>
 
-<div className="mobile-item-nav">  <li className="nav-item">
-                    <Link to="/cart" className="nav-link mall">
-                      <LocalMallOutlined className="local" />
-                      <span>{countAdd}</span>
-                      {/* BASKET */}
-                      {t('121')}
-
-                    </Link>
-                  </li>
-                  <li
-                    className="nav-item"
-                    // onMouseDown={()=>setOpenModal(!openModal)}
-                    onClick={() => setOpenModal(!openModal)}
-                  >
-                    <Link to="/" className="nav-link">
-                      <i className="fa fa-user-o"></i>
-                      {t('116')}
-                    </Link>
-                    <Modal openModal={openModal} />
-                   
-                    
-                  </li></div>
-                
+                  <div className="mobile-item-nav">
+                    {" "}
+                    <li className="nav-item">
+                      <Link to="/cart" className="nav-link mall">
+                        <LocalMallOutlined className="local" />
+                        <span>{total}</span>
+                        {/* BASKET */}
+                        {t("121")}
+                      </Link>
+                    </li>
+                    <li
+                      className="nav-item"
+                      // onMouseDown={()=>setOpenModal(!openModal)}
+                      onClick={() => setOpenModal(!openModal)}
+                    >
+                      <Link to="/" className="nav-link">
+                        <i className="fa fa-user-o"></i>
+                        {t("116")}
+                      </Link>
+                      <Modal openModal={openModal} />
+                    </li>
+                  </div>
                 </ul>
               </div>
             </>
@@ -540,8 +541,7 @@ salom
             ""
           )}
 
-
-{window.innerWidth <800 && pathname === "/profile" || 
+          {(window.innerWidth < 800 && pathname === "/profile") ||
           pathname === "/orders" ||
           pathname === "/logout" ? (
             <>
@@ -564,20 +564,21 @@ salom
                         className={`${searchBar && "active"}`}
                         value={inputValue}
                         onChange={(e) => typeInput(e)}
-                        placeholder={t('125')}
+                        placeholder={t("125")}
                       />
                       <div
                         className="category-menu1"
                         onClick={() => openCategory1(true)}
                       >
                         <span>
-                          {/* Categories */}{t('122')}
-                          </span>{" "}
+                          {/* Categories */}
+                          {t("122")}
+                        </span>{" "}
                         <i className={`fa fa-angle-down d-block mx-2`}></i>
                         <div
                           className={`category-tools ${!catBar1 && "d-none"}`}
                         >
-                          {allCategories.map((data,index) => (
+                          {allCategories.map((data, index) => (
                             <Link
                               to="/products"
                               key={index}
@@ -603,7 +604,7 @@ salom
                           inputValue === "" && "d-none"
                         }`}
                       >
-                        {dataProducts.map((data,index) => (
+                        {dataProducts.map((data, index) => (
                           <Link
                             to={`/products/${data.id}`}
                             key={index}
@@ -618,7 +619,7 @@ salom
                             ></i>
                           </Link>
                         ))}
-                        {dataCategories.map((data,index) => (
+                        {dataCategories.map((data, index) => (
                           <Link
                             to="/products"
                             key={index}
@@ -633,7 +634,7 @@ salom
                             ></i>
                           </Link>
                         ))}
-                        {dataSubCategories.map((data,index) => (
+                        {dataSubCategories.map((data, index) => (
                           <Link
                             to="/products"
                             key={index}
@@ -710,7 +711,7 @@ salom
                     <li className="nav-item">
                       <Link to="/cart" className="nav-link mall">
                         <LocalMallOutlined className="local" />
-                        <span>{countAdd}</span>
+                        <span>{total}</span>
                       </Link>
                     </li>
                     <li
@@ -737,8 +738,10 @@ salom
               >
                 <div
                   className="category-menu"
-                  onClick={() => {openCategory(true);dispatch(setOpenSideBar(!catBar))}}
-
+                  onClick={() => {
+                    openCategory(true);
+                    dispatch(setOpenSideBar(!catBar));
+                  }}
                 >
                   {/* {console.log(catBar, "catBar")} */}
                   {/* <i
@@ -748,13 +751,15 @@ salom
 
                   {/* <Close className={`times d-block mx-2 ${!catBar && "d-none"}`} />{" "} */}
                   <span>
-                    {t('115')}
+                    {t("115")}
                     {/* ALL COLLECTIONS */}
-
                   </span>
                   <div
                     className={`category-tools ${
-                      ((window.innerWidth >870)&(open === true) & (pathname === "/") && "d-block") ||
+                      ((window.innerWidth > 870) &
+                        (open === true) &
+                        (pathname === "/") &&
+                        "d-block") ||
                       (!catBar && "d-none")
                     }
                 `}
@@ -766,7 +771,7 @@ salom
                     >
                       <p>
                         {/* All */}
-{t('123')}
+                        {t("123")}
                       </p>
                     </Link>
                     <a
@@ -774,9 +779,9 @@ salom
                       className="result nav-link px-0"
                       onClick={() => changeCategories(1)}
                     >
-                      <p>{t('126')}</p>
+                      <p>{t("126")}</p>
                     </a>
-                    {allCategories.map((data,index) => (
+                    {allCategories.map((data, index) => (
                       <Link
                         to="/products"
                         key={index}
@@ -797,27 +802,27 @@ salom
                 >
                   <li className="nav-item">
                     <Link to="/" className="nav-link">
-                      {/* HOME */}  {t('116')}
+                      {/* HOME */} {t("116")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/products" className="nav-link">
-                      SHOP   {t('117')}
+                      SHOP {t("117")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/blog" className="nav-link">
-                      BLOG  {t('118')}
+                      BLOG {t("118")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/aboutus" className="nav-link">
-                      ABOUT  {t('119')}
+                      ABOUT {t("119")}
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/profile" className="nav-link">
-                      CONTACT US  {t('120')}
+                      CONTACT US {t("120")}
                     </Link>
                   </li>
                   <Close
@@ -827,64 +832,57 @@ salom
                 </ul>
 
                 <ul className="mobile_bottom">
-
-                  <div className="mobile-item-nav">                  <li className="nav-item">
-                    <Link to="/" className="nav-link">
-                    <img src={home} alt="" />
-                      HOME  {t('116')}
-                    </Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link to="/saved" className="nav-link">
-                      <i className="fa fa-heart-o">
-                        <span>{countLike}</span>
-                      </i>
-                      LIKE
-                    </Link>
-                  </li></div>
-
-
-
+                  <div className="mobile-item-nav">
+                    {" "}
+                    <li className="nav-item">
+                      <Link to="/" className="nav-link">
+                        <img src={home} alt="" />
+                        HOME {t("116")}
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/saved" className="nav-link">
+                        <i className="fa fa-heart-o">
+                          <span>{countLike}</span>
+                        </i>
+                        LIKE
+                      </Link>
+                    </li>
+                  </div>
 
                   <li className="nav-item">
                     <Link to="/" className="nav-link toMobile">
-                    <img src={logo} alt="" />
-                   
+                      <img src={logo} alt="" />
                     </Link>
                   </li>
 
-<div className="mobile-item-nav">  <li className="nav-item">
-                    <Link to="/cart" className="nav-link mall">
-                      <LocalMallOutlined className="local" />
-                      <span>{countAdd}</span>
-                      BASKET
-                    </Link>
-                  </li>
-                  <li
-                    className="nav-item"
-                    // onMouseDown={()=>setOpenModal(!openModal)}
-                    onClick={() => setOpenModal(!openModal)}
-                  >
-                    <Link to="/" className="nav-link">
-                      <i className="fa fa-user-o"></i>
-                      HOME  {t('116')}
-                    </Link>
-                    <Modal openModal={openModal} />
-                   
-                    
-                  </li></div>
-                
+                  <div className="mobile-item-nav">
+                    {" "}
+                    <li className="nav-item">
+                      <Link to="/cart" className="nav-link mall">
+                        <LocalMallOutlined className="local" />
+                        <span>{total}</span>
+                        BASKET
+                      </Link>
+                    </li>
+                    <li
+                      className="nav-item"
+                      // onMouseDown={()=>setOpenModal(!openModal)}
+                      onClick={() => setOpenModal(!openModal)}
+                    >
+                      <Link to="/" className="nav-link">
+                        <i className="fa fa-user-o"></i>
+                        HOME {t("116")}
+                      </Link>
+                      <Modal openModal={openModal} />
+                    </li>
+                  </div>
                 </ul>
               </div>
             </>
           ) : (
             "dddd"
           )}
-
-
-
-          
         </nav>
       </div>
       <div
@@ -912,14 +910,3 @@ salom
 };
 
 export default Navbar;
-
-
-
-
-
-
-
-
-
-
-

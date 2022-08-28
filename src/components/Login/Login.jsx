@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "./Scss/Login.scss";
 import Img from "./images/p.png";
 import { Chevron } from "../../assets/icons";
@@ -10,8 +10,11 @@ import logo from "../Navbar/images/logoMix.png";
 
 import { BASE_URL } from "../../utils/configuration";
 import { login } from "../../Redux/Reducer/UserSlice";
+import { getUsersInfo } from "../../utils/request";
 
 const Login = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [showLogin, setShowLogin] = useState(true);
   const [hideInput, setHideInput] = useState(false);
   const [rememberPass, setrememberPass] = useState(false);
@@ -38,26 +41,31 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const dataForm = new FormData(user);
-    console.log("---dataForm-----", dataForm);
-    axios
-      .post(BASE_URL + "login", dataForm)
-      .then((data) => {
-        // dispatch(login(user));
-        // navigate("/");
-        console.log("--------", data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+    console.log("---dataForm-----", user);
+    axios.post(BASE_URL + "login/", user).then(({ data }) => {
+      localStorage.setItem("token", data.access);
+      getUsersInfo(data.access)
+        .then(({ data }) => {
+          console.log("--------", data);
+          dispatch(login(data));
+          history.push("/");
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* <button 
+  onClick={() =>  window.clipboardData.setData("Text", 'Copy this text to clipboard')}>
+ Copy
+</button> */}
       <div className="Login">
         <Link to={`/`} className="logo">
           <img src={logo} alt="..." />
-        
         </Link>
         <div className="wrapper">
           <div className="right-radius">

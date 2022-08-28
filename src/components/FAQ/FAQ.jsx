@@ -81,7 +81,7 @@ const FAQ = ({ english, russian, uzbek }) => {
               <input type="checkbox" name="" id={`faq${data.id + 1}`} />
               <label className="col-md-12" htmlFor={`faq${data.id + 1}`}>
                 <div className="col-1">
-                  <h2>0{data.id}</h2>
+                  <h2>0{index+1}</h2>
                 </div>
                 <div className="col-10">
                   <h3 className="title">
